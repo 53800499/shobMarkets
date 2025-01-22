@@ -3,24 +3,72 @@
 import Container from "@/ui/components/container/container";
 import Image from "next/image";
 import React from "react";
-import Collection from "./decouvir/collection";
+import Typography from "@/ui/designSystem/typography/typography";
+import Button from "@/ui/designSystem/button/button";
 
 export default function Decouvrir() {
   return (
-    <Container className="relative h-[80vh] overflow-visible">
-      {/* L'image dépasse du conteneur */}
-      <Image
-        src="/assets/images/Slide1.png"
-        alt="Decouvrir"
-        layout="fill" // L'image prend la taille du conteneur
-        objectPosition="center" // L'image est centrée dans le conteneur
-        objectFit="cover" // L'image couvre le conteneur tout en maintenant ses proportions
-        className="absolute top-[-10%] left-[-10%]" // Déplace l'image pour la faire déborder
-      />
-      {/* Le contenu au-dessus de l'image, positionné en bas à droite */}
-      {/*       <Collection className="absolute m-10 right-10 bottom-40 md:right-4 md:bottom-2" />
-       */}
-      <Collection className="absolute p-5 bg-white bg-opacity-75 rounded-lg shadow-lg bottom-10 right-10" />
-    </Container>
+    <div className="bg-white">
+      <Container className="flex flex-wrap overflow-visible lg:flex-nowrap">
+        <div className="flex-1 space-y-6 relative p-10">
+          {/* Titre principal */}
+          <Typography variant="h2" className="text-gray-900 font-bold">
+            TROUVEZ VOTRE PRODUIT FAVORI EN FONCTION
+          </Typography>
+
+          {/* Description */}
+          <Typography variant="body" className="text-gray-600 text-justify">
+            Découvrez notre vaste collection de produits soigneusement conçus,
+            pensés pour révéler votre individualité et répondre à votre sens du
+            style.
+          </Typography>
+
+          {/* Bouton Boutique */}
+          <Button
+            variant="accent"
+            size="medium"
+            className="mt-4 sm:self-start rounded-full"
+          >
+            Visitez la boutique
+          </Button>
+
+          {/* Statistiques */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+            {[
+              { count: "200+", label: "Marques internationales" },
+              { count: "2,000+", label: "Produits de haute qualité" },
+              { count: "200+", label: "Clients satisfaits" },
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <Typography variant="h3" className="text-gray-900">
+                  {stat.count}
+                </Typography>
+                <Typography
+                  variant="caption3"
+                  theme="gray"
+                  className="text-gray-500"
+                >
+                  {stat.label}
+                </Typography>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Image */}
+        <div className="relative w-full lg:w-1/2 mt-6 lg:mt-0">
+          <div className="relative w-full h-64 lg:h-full">
+            <Image
+              src="/assets/images/accueil.jpg"
+              alt="Decouvrir"
+              layout="fill"
+              objectFit="contain"
+              objectPosition="center"
+              className="rounded-lg border-4 border-white"
+            />
+          </div>
+        </div>
+      </Container>
+    </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import FunForFurnitureGrid from "@/components/autre";
 import Categorie from "@/components/home/categorie/categorie";
+import MarqueContainer from "@/components/home/marque/marque.container";
 import Produits from "@/components/home/produits/produits";
 import Decouvrir from "@/components/home/shop";
 import QualiteContainer from "@/components/shop/qualite/qualite.container";
@@ -15,6 +16,7 @@ export default function index() {
       <Seo title="Markets" description="E-commerce" />
       <Layout isDisplayCreadCrumbs={false}>
         <Decouvrir />
+        <MarqueContainer/>
         <Categorie/>
         <Produits/>
         <FunForFurnitureGrid/>

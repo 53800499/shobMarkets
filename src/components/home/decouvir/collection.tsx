@@ -34,7 +34,7 @@ export default function Collection({ className }: Props) {
         votre garde-robe avec des créations modernes et durables !
       </Typography>
       <Button variant="accent" size="medium" className=" sm:self-start">
-        Commander
+        Boutique
       </Button>
     </div>
   );

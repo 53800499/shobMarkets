@@ -25,7 +25,7 @@ export default function Categorie() {
       {/* <div className="flex flex-wrap justify-center gap-4 mt-10">
         <Card />
       </div> */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
       {dbCategories.map((category, index) => (
         <Card
           key={index}

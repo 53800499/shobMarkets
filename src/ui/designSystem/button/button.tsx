@@ -6,7 +6,7 @@ import { LinkType, LinkTypes } from "@/lib/link-type";
 import Link from "next/link";
 
 interface Props {
-  size?: "small" | "medium" | "large";
+  size?: "small" | "medium" | "large"|"produit";
   variant?: "accent" | "secondary" | "outline" | "disabled" | "suivant" | "ico" | "outlineP";
   icon?: IconProps; // icon
   iconTheme?: "accent" | "secondary" | "gray";
@@ -87,6 +87,14 @@ export default function Button({
         variant === "ico"
           ? "w-[40px] h-[40px] flex items-center justify-center"
           : "px-[14px] py-[12px]"
+      }`;
+      icoSize = 24;
+      break;
+      case "produit":
+      sizeStyles = `text-caption3 font-medium ${
+        variant === "ico"
+          ? "w-[40px] h-[40px] w-[40px] h-[40px] flex items-center justify-center"
+          : "px-[2px] py-[3px] sm:px-[14px] sm:py-[12px]"
       }`;
       icoSize = 24;
       break;

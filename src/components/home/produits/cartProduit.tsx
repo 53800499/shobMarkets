@@ -4,8 +4,9 @@ import React from "react";
 import Image from "next/image";
 import Button from "@/ui/designSystem/button/button";
 import Typography from "@/ui/designSystem/typography/typography";
+import { RiStarFill } from "react-icons/ri";
 
-interface Props {
+interface Produit {
   src: string;
   alt: string;
   nom: string;
@@ -22,8 +23,8 @@ export default function CartProduit({
   prix,
   promotion,
   date,
-  description,
-}: Props) {
+  description
+}: Produit) {
   // Vérifie si le produit a une promotion active
   const hasPromotion = promotion && Number(promotion) > 0;
 
@@ -60,7 +61,7 @@ export default function CartProduit({
   return (
     <div className="relative flex flex-col bg-gray-100  rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
       {/* Image et badges */}
-      <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
+      <div className="relative w-full md:h-48 h-24 overflow-hidden rounded-t-lg">
         <Image
           src={src}
           alt={alt}
@@ -72,8 +73,8 @@ export default function CartProduit({
         {hasPromotion && discountPercentage && (
           <Typography
             component="span"
-            variant="caption3"
-            className="absolute flex flex-col items-center justify-center top-4 right-4 bg-white text-gray-900 rounded-full shadow-md text-sm w-[50px] h-[50px]"
+            variant="caption4"
+            className="absolute flex flex-col items-center justify-center md:top-4 md:right-4 bg-white text-gray-900 rounded-full shadow-md md:w-[50px] md:h-[50px] w-[30px] h-[30px]  top-1 right-1 bg-opacity-85"
           >
             -{discountPercentage}%
           </Typography>
@@ -83,7 +84,7 @@ export default function CartProduit({
           <Typography
             component="span"
             variant="caption4"
-            className="absolute flex flex-col items-center justify-center top-4 left-4 bg-secondary bg-opacity-85 text-white rounded-full shadow-md p-5  text-sm w-[50px] h-[50px] "
+            className="absolute flex flex-col items-center justify-center top-1 left-1 md:top-4 md:left-4 bg-secondary bg-opacity-85 text-white rounded-full shadow-md md:p-5 w-[30px] h-[30px] md:w-[50px] md:h-[50px] "
           >
             New
           </Typography>
@@ -91,23 +92,34 @@ export default function CartProduit({
       </div>
 
       {/* Détails du produit */}
-      <div className="flex flex-col p-4">
-        <Typography variant="h5" component="h3" className="mb-2">
+      <div className="flex flex-col px-2 md:p-4">
+        <Typography variant="h5" component="h3" className="md:mb-2">
           {nom}
         </Typography>
-        <Typography variant="caption1" className="text-gray-500 mb-4">
-          {description}
+        <Typography variant="caption1" className="text-gray-500 md:mb-4">
+          <div className="flex space-x-2 text-yellow-500">
+            <Typography variant="caption4" className="text-gray-4 flex items-center gap-1">
+              <RiStarFill className="text-yellow" />
+              <RiStarFill className="text-yellow " />
+              <RiStarFill className="text-yellow " />
+              <RiStarFill className="text-yellow " />
+              <RiStarFill className="text-yellow " />
+            </Typography>
+            <Typography variant="caption4" className="text-gray-4">
+              | 4.5/5
+            </Typography>
+          </div>
         </Typography>
 
         {/* Prix et promotion */}
-        <div className="flex items-center mb-4 space-x-4">
+        <div className="flex items-center justify-between md:mb-4 space-x-4">
           <Typography variant="body" className="text-black font-bold">
             €{prix}
           </Typography>
           {hasPromotion && (
             <Typography
               variant="caption1"
-              className="line-through text-gray-400"
+              className="line-through text-gray-3"
             >
               €{promotion}
             </Typography>
@@ -115,7 +127,7 @@ export default function CartProduit({
         </div>
 
         {/* Bouton Ajouter au panier */}
-        <Button variant="accent" size="small" action={handleAddToCart}>
+        <Button variant="accent" size="produit" className="my-2" action={handleAddToCart}>
           Ajouter au panier
         </Button>
       </div>

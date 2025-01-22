@@ -63,6 +63,7 @@ module.exports = {
     colors: {
       yellow: "#FFC700",
       white: "#ffffff",
+      white: "#FDFAFAFF",
       primary: {
         1: "#FFF3E3",
         DEFAULT: "#B88E2F"

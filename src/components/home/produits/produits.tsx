@@ -7,7 +7,25 @@ import CartProduit from "./cartProduit";
 import { dbProduits } from "./produitsDB";
 import Button from "@/ui/designSystem/button/button";
 
+// Définition de l'interface Produit
+interface Produit {
+  
+  id: number; // ou string
+  src: string;
+  alt: string;
+  prix: number;
+  nom: string;
+  description: string;
+  dateAjout: string; // ou Date
+  promotion?: string |number; // Optionnel
+}
+
 export default function Produits() {
+  // Fonction pour afficher un nombre limité de produits
+  const getLimitedProducts = (products: Produit[], limit: number = 8): Produit[] => {
+    return products.slice(0, limit); // Retourne seulement les premiers "limit" produits
+  };
+
   return (
     <Container className="my-12 bg-white">
       {/* Titre de la section */}
@@ -16,8 +34,8 @@ export default function Produits() {
       </Typography>
 
       {/* Grille des produits */}
-      <div className="grid grid-cols-1 m:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-        {dbProduits.map((produit) => (
+      <div className="grid grid-cols-2 m:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+        {getLimitedProducts(dbProduits).map((produit) => (
           <CartProduit
             key={produit.id}
             src={produit.src}
@@ -26,7 +44,7 @@ export default function Produits() {
             nom={produit.nom}
             description={produit.description}
             date={produit.dateAjout}
-            promotion={produit.promotion ?? ""} // Fournit une valeur par défaut si "promotion" est undefined
+            promotion={produit.promotion ?? ""}
           />
         ))}
       </div>

@@ -74,7 +74,7 @@ export default function Navigation() {
           >
             <ActiveLink href="/">Accueil</ActiveLink>
             <ActiveLink href="/shop">Boutique</ActiveLink>
-            <ActiveLink href="/nouveaux-arrivants">Nouveau Arrivant</ActiveLink>
+            {/* <ActiveLink href="/nouveaux-arrivants">Nouveau Arrivant</ActiveLink> */}
             <ActiveLink href="/contact">Contact</ActiveLink>
           </Typography>
           {/* Search Bar */}
