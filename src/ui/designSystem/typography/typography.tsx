@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import React from "react";
+
 interface Props {
   variant?:
     | "display"
@@ -21,11 +22,9 @@ interface Props {
     | "caption4";
   component?: "h1" | "h2" | "h3" | "h4" | "h5" | "div" | "p" | "span";
   theme?: "black" | "white" | "gray" | "primary" | "secondary";
-  weight?: "regular" | "medium";
+  weight?: "regular" | "medium" | "bold";
   className?: string;
-  children: React.ReactNode /* 
-  isLoading;
-  iconTheme  */;
+  children: React.ReactNode;
 }
 
 export default function Typography({
@@ -34,85 +33,45 @@ export default function Typography({
   component: Component = "div",
   theme = "black",
   weight = "regular",
-  className
+  className,
 }: Props) {
-  let variantStyle: string = "",
-    colorStyle: string = "";
+  // Styles pour les variantes
+  const variantStyles: Record<string, string> = {
+    display: "text-6xl md:text-8xl",
+    h1: "text-5xl md:text-7xl",
+    h2: "text-4xl md:text-6xl",
+    h3: "text-3xl md:text-5xl",
+    h4: "text-2xl md:text-4xl",
+    h5: "text-xl md:text-3xl",
+    lead: "text-2xl md:text-xl",
+    "body-lg": "text-lg md:text-xl",
+    body: "text-base md:text-lg",
+    "body-base": "text-base",
+    "body-sm": "text-sm",
+    caption1: "text-caption1",
+    caption2: "text-caption2",
+    caption3: "text-caption3",
+    caption4: "text-caption4",
+  };
 
-  switch (theme) {
-    case "black":
-      colorStyle = "text-gray";
-      break;
-    case "gray":
-      colorStyle = "text-gray-4";
-      break;
+  // Couleurs dynamiques
+  const themeStyles: Record<string, string> = {
+    black: "text-gray",
+    gray: "text-gray-4",
+    white: "text-white",
+    primary: "text-primary",
+    secondary: "text-secondary",
+  };
 
-    case "white":
-      colorStyle = "text-white";
-      break;
-
-    case "primary":
-      colorStyle = "text-primary";
-      break;
-
-    default:
-      break;
-  }
-
-  switch (variant) {
-    case "display":
-      variantStyle = "text-8xl md:text-6xl";
-      break;
-    case "h1":
-      variantStyle = "text-7xl md:text-5xl";
-      break;
-    case "h2":
-      variantStyle = "text-6xl md:text-4xl";
-      break;
-    case "h3":
-      variantStyle = "text-5xl md:text-3xl";
-      break;
-    case "h4":
-      variantStyle = "text-4xl md:text-2xl";
-      break;
-    case "h5":
-      variantStyle = "text-3xl md:text-1x";
-      break;
-    case "lead":
-      variantStyle = "text-2xl md:text-xl";
-      break;
-    case "body-lg":
-      variantStyle = "text-lg md:text-xl";
-      break;
-      break;
-    case "body":
-      variantStyle = "text-2xl md:text-xl";
-      break;
-    case "body-base":
-      variantStyle = "text-base";
-      break;
-    case "body-sm":
-      variantStyle = "text-sm";
-      break;
-    case "caption1":
-      variantStyle = "text-caption1";
-      break;
-    case "caption2":
-      variantStyle = "text-caption2";
-      break;
-    case "caption3":
-      variantStyle = "text-caption3";
-      break;
-    case "caption4":
-      variantStyle = "text-caption4";
-      break;
-  }
   return (
     <Component
       className={clsx(
-        variantStyle,
-        colorStyle,
-        weight === "medium" && "font-medium",
+        variantStyles[variant],
+        themeStyles[theme],
+        {
+          "font-medium": weight === "medium",
+          "font-bold": weight === "bold",
+        },
         className
       )}
     >

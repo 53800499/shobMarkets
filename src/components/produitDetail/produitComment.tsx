@@ -18,18 +18,18 @@ export default function ProduitComment() {
       content: (
         <>
           <p className="text-justify">
-            Reflétant l'esprit brut et indomptable du rock 'n' roll, le
-            haut-parleur stéréo portable Kilburn adopte l'apparence et le son
+            Reflétant l{"'"}esprit brut et indomptable du rock {"'"}n{"'"} roll, le
+            haut-parleur stéréo portable Kilburn adopte l{"'"}apparence et le son
             emblématiques de Marshall, débranche les câbles et emmène le
             spectacle sur la route.
           </p>
           <p>
             Pesant moins de 7 livres, le Kilburn est une pièce légère
-            d'ingénierie vintage. Étant l'un des haut-parleurs les plus
+            d{"'"}ingénierie vintage. Étant l{"'"}un des haut-parleurs les plus
             puissants de sa catégorie, le Kilburn est un héros compact et
             robuste avec un son équilibré qui offre des médiums clairs et des
             aigus étendus pour un son à la fois articulé et prononcé. Les
-            boutons analogiques vous permettent d'affiner les réglages selon vos
+            boutons analogiques vous permettent d{"'"}affiner les réglages selon vos
             préférences personnelles, tandis que la sangle en cuir influencée
             par la guitare permet un transport facile et élégant.
           </p>
@@ -48,7 +48,7 @@ export default function ProduitComment() {
     },
     {
       title: "Avis [5]",
-      content: <p>Les avis et notes des utilisateurs s'affichent ici.</p>
+      content: <p>Les avis et notes des utilisateurs s{"'"}affichent ici.</p>
     }
   ];
 

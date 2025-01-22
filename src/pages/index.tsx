@@ -12,7 +12,7 @@ import React from "react";
 export default function index() {
   return (
     <>
-      <Seo title="BOUTIQUE" description="E-commerce" />
+      <Seo title="Markets" description="E-commerce" />
       <Layout isDisplayCreadCrumbs={false}>
         <Decouvrir />
         <Categorie/>

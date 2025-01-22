@@ -13,7 +13,7 @@ export default function Avatar({ size = "medium", src, alt, className }: Props) 
   let sizeStyles: string;
   switch (size) {
     case "small":
-      sizeStyles = "w-[50px] h-[32px]";
+      sizeStyles = "w-[46px] h-[30px] md:w-[80px] md:h-[56px]";
       break;
     case "medium":
       sizeStyles = "w-[60px] h-[42px]";

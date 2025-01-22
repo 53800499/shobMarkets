@@ -13,39 +13,35 @@ export default function CartTable() {
       image: "/assets/images/Slide2.png",
       name: "Asgaard sofa",
       price: 250000,
-      quantity: 1,
+      quantity: 1
     },
     {
       id: 2,
       image: "/assets/images/Slide2.png",
       name: "Asgaard sofa",
       price: 250000,
-      quantity: 1,
+      quantity: 1
     },
     {
       id: 3,
       image: "/assets/images/Slide2.png",
       name: "Asgaard sofa",
       price: 250000,
-      quantity: 1,
-    },
+      quantity: 1
+    }
   ]);
 
   const calculateTotal = () => {
     return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   };
 
-  const handleQuantityChange = (id, value) => {
+  const handleQuantityChange = (id: string | number, value: number) => {
     setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, parseInt(value) || 1) }
-          : item
-      )
+      prev.map((item) => (item.id === id ? { ...item, quantity: value } : item))
     );
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id: string | number) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
@@ -95,7 +91,7 @@ export default function CartTable() {
                     className="w-16 text-center border border-gray-300 rounded"
                     value={item.quantity}
                     onChange={(e) =>
-                      handleQuantityChange(item.id, e.target.value)
+                      handleQuantityChange(item.id, Number(e.target.value))
                     }
                   />
                 </td>

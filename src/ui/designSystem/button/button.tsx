@@ -101,7 +101,7 @@ export default function Button({
     case "large":
       sizeStyles = `text-caption1 font-medium  ${
         variant === "ico"
-          ? "w-[60px] h-[60px] flex items-center justify-center"
+          ? "w-[40px] h-[40px] md:w-[60px] md:h-[60px] flex items-center justify-center"
           : "px-[22px] py-[18px]"
       }`;
       icoSize = 30;

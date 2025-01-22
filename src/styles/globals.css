@@ -25,7 +25,7 @@ a:hover{
 /* Animation de couleur pour le texte */
 @keyframes textColorChange {
   0% {
-    color: #000000; /* Couleur initiale (Noir) */
+    color: #704505; /* Couleur initiale (Noir) */
   }
   25% {
     color: #cdac5e; /* Couleur rouge */

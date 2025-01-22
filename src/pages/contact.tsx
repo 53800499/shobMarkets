@@ -1,19 +1,20 @@
 /** @format */
 
-import ProduitDetailContainer from "@/components/produitDetail/produitDetail.container";
+import ContactContainer from "@/components/contact/contact.container";
 import QualiteContainer from "@/components/shop/qualite/qualite.container";
+import ShobLink from "@/components/shop/shobLink/shobLink";
 import Layout from "@/ui/components/layout/layout";
 import Seo from "@/ui/components/seo/seo";
 import React from "react";
-//interface Props {}
 
-export default function DetailProduit() {
+export default function Contact() {
   return (
     <>
-      <Seo title="BOUTIQUE" description="Detail du produit" />
+      <Seo title="BOUTIQUE" description="Contactez-nous" />
 
       <Layout isDisplayCreadCrumbs={false}>
-        <ProduitDetailContainer />
+        <ShobLink />
+        <ContactContainer />
         <QualiteContainer />
       </Layout>
     </>

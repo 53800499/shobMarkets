@@ -22,7 +22,7 @@ export default function Decouvrir() {
   };
 
   return (
-    <Container className="relative w-full h-[80vh] overflow-hidden">
+    <Container className="relative w-full overflow-hidden">
       {/* Le conteneur principal avec le carrousel */}
       <div
         className="relative flex w-full h-full transition-transform duration-700 ease-in-out"
@@ -31,7 +31,10 @@ export default function Decouvrir() {
         }}
       >
         {dbProduits.map((produit, index) => (
-          <div key={index} className="relative flex-shrink-0 w-full h-full mx-5">
+          <div
+            key={index}
+            className="relative flex-shrink-0 w-full h-full mx-5"
+          >
             {/* Image */}
             <Image
               src={produit.src}
@@ -41,7 +44,7 @@ export default function Decouvrir() {
               className="absolute"
             />
             {/* Collection */}
-            <Collection className="absolute p-5 bg-white bg-opacity-75 rounded-lg shadow-lg bottom-10 right-10" />
+            <Collection className="absolute p-5 bg-white bg-opacity-50 rounded-lg shadow-lg sm:bottom-5 sm:right-10 md:bottom-10" />
 
             <Button
               action={handleNext}

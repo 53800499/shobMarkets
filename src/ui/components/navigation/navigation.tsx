@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+/** @format */
+
+import React, { useEffect, useState } from "react";
 import Container from "@/ui/components/container/container";
 import ActiveLink from "@/ui/components/navigation/active-link";
 import Typography from "@/ui/designSystem/typography/typography";
@@ -8,10 +10,21 @@ import Avatar from "@/ui/designSystem/avatar/avatar";
 import { FaUser } from "react-icons/fa6";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FaBars, FaSearch, FaTimes } from "react-icons/fa";
+import { useRouter } from "next/router"; // Importer useRouter de Next.js
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isFocused, setIsFocused] = useState(false); // Etat pour le focus
+  const router = useRouter(); // Remplacer useNavigate par useRouter
+  useEffect(() => {
+    // Vérifier si l'URL actuelle est "/cart"
+    if (router.pathname === "/cart") {
+      setIsFocused(true);
+    } else {
+      setIsFocused(false);
+    }
+  }, [router.pathname]); // Se déclenche lorsque le chemin change
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -22,8 +35,13 @@ export default function Navigation() {
     console.log("Recherche de produit :", searchQuery);
   };
 
+  // Fonction pour passer à une autre page
+  const navigateToPage = (path: string) => {
+    router.push(path); // Utilisation de router.push pour la navigation
+  };
+
   return (
-    <nav className="bg-white shadow-md ">
+    <nav className="bg-white shadow sticky top-0 z-50">
       <Container className="flex items-center justify-between px-6">
         {/* Logo */}
         <Link
@@ -32,15 +50,16 @@ export default function Navigation() {
         >
           <Avatar
             src="/assets/images/logo.png"
-            alt="logo" size="small"
+            alt="logo"
+            size="small"
             className="avatar-animation"
           />
           <Typography
-            variant="h3"
+            variant="h2"
             theme="black"
-            component="h3"
+            component="h2"
             weight="medium"
-            className="text-lg font-bold text-animation sm:text-xl md:text-2xl lg:text-4xl"
+            className="text-animation "
           >
             Market
           </Typography>
@@ -55,7 +74,7 @@ export default function Navigation() {
           >
             <ActiveLink href="/">Accueil</ActiveLink>
             <ActiveLink href="/shop">Boutique</ActiveLink>
-            <ActiveLink href="/about">A propos</ActiveLink>
+            <ActiveLink href="/nouveaux-arrivants">Nouveau Arrivant</ActiveLink>
             <ActiveLink href="/contact">Contact</ActiveLink>
           </Typography>
           {/* Search Bar */}
@@ -77,13 +96,15 @@ export default function Navigation() {
         </div>
 
         {/* Icons */}
-        <div className="flex items-center gap-3 pb-3">
+        <div className="flex items-center md:gap-3 pb-3">
           <Button
+            action={() => navigateToPage("/cart")}
             variant="ico"
             size="large"
             iconTheme="secondary"
             icon={{ icon: HiOutlineShoppingCart }}
             aria-label="Panier"
+            className={`${isFocused ? "bg-primary text-white" : ""}`} // Assurez-vous que la classe est correctement conditionnée
           />
           <Button
             variant="ico"
@@ -110,27 +131,32 @@ export default function Navigation() {
           isMobileMenuOpen ? "max-h-screen pb-4" : "max-h-0 overflow-hidden"
         }`}
       >
-        <div className="flex flex-col px-10 ">
+        <div className="flex flex-col px-10">
           <div className="flex space-x-4">
-            
-          <ActiveLink href="/" className="block py-2 text-lg sm:text-xl">
-            Accueil
-          </ActiveLink>
-          <ActiveLink href="/shop" className="block py-2 text-lg sm:text-xl">
-            Boutique
-          </ActiveLink>
-          <ActiveLink href="/about" className="block py-2 text-lg sm:text-xl">
-            A propos
-          </ActiveLink>
-          <ActiveLink href="/contact" className="block py-2 text-lg sm:text-xl">
-            Contact
-          </ActiveLink>
+            <ActiveLink href="/" className="block py-2 text-lg sm:text-xl">
+              Accueil
+            </ActiveLink>
+            <ActiveLink href="/shop" className="block py-2 text-lg sm:text-xl">
+              Boutique
+            </ActiveLink>
+            <ActiveLink
+              href="/nouveaux-arrivants"
+              className="block py-2 text-lg sm:text-xl"
+            >
+              Nouveaux Arrivants
+            </ActiveLink>
+            <ActiveLink
+              href="/contact"
+              className="block py-2 text-lg sm:text-xl"
+            >
+              Contact
+            </ActiveLink>
           </div>
 
           {/* Mobile Search */}
           <form
             onSubmit={handleSearch}
-            className="flex items-center px-3 py-1 bg-gray-100 border "
+            className="flex items-center px-3 py-1 bg-gray-100 border"
           >
             <input
               type="text"

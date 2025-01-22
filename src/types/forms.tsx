@@ -1,18 +1,27 @@
-import { Control, FieldErrors, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
+import { FieldErrors, FieldValues, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
 
-export type FormsType = {
-  errors: FieldErrors<any>; // Accepter les erreurs générées par react-hook-form
-  register: UseFormRegister<any>;
-  handleSubmit: UseFormHandleSubmit<any>;
-  onSubmit: (data: any) => void;
+// Définir le type des champs du formulaire
+export type FormsType<T extends FieldValues> = {
+  errors: FieldErrors<T>; // Accepter les erreurs générées par react-hook-form
+  register: UseFormRegister<T>;
+  handleSubmit: UseFormHandleSubmit<T>;
+  onSubmit: (data: T) => void;
   isLoading: boolean;
 };
 
-export interface RegisterFormFieldsType {
-    email: string;
-    password: string;
-    how_did_hear: string;
+// Exemple de type pour le formulaire de connexion
+export interface LoginFormFieldsType {
+  email: string;
+  password: string;
 }
+
+// Définition des types pour chaque formulaire
+export interface RegisterFormFieldsType {
+  email: string;
+  password: string;
+  how_did_hear: string;
+}
+
 export interface LoginFormFieldsType {
     email: string;
     password: string;

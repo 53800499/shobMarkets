@@ -8,11 +8,10 @@ import { v4 as uuidv4 } from "uuid";
 import ActiveLink from "./active-link";
 import { FooterLink } from "@/types/app-links";
 import { LinkType } from "@/lib/link-type";
-import Image from "next/image";
 import Avatar from "@/ui/designSystem/avatar/avatar";
 
 export default function Footer() {
-  let currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
   // Générer la liste dynamique des liens du footer
   const footNavigationList = footerLinks.map((columnLinks) => (
@@ -44,7 +43,7 @@ export default function Footer() {
               className="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
             <button className="px-4 py-2 text-white rounded-lg bg-primary hover:bg-primary-400">
-              S'abonner
+              S{"'"}abonner
             </button>
           </div>
         </div>

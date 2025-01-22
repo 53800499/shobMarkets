@@ -12,7 +12,7 @@ export default function Categorie() {
       <Typography
         variant="h2"
         component="h2"
-        className="flex items-center justify-center"
+        className="text-center"
       >
         Parcourir la gamme
       </Typography>

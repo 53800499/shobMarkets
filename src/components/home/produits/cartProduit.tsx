@@ -1,9 +1,9 @@
 /** @format */
 
+import React from "react";
+import Image from "next/image";
 import Button from "@/ui/designSystem/button/button";
 import Typography from "@/ui/designSystem/typography/typography";
-import Image from "next/image";
-import React from "react";
 
 interface Props {
   src: string;
@@ -25,115 +25,96 @@ export default function CartProduit({
   description,
 }: Props) {
   // Vérifie si le produit a une promotion active
-  function checkProductPromotion(promotion: string | number) {
-    return (
-      promotion !== 0 &&
-      promotion !== "0" &&
-      promotion !== null &&
-      promotion !== undefined
-    );
-  }
+  const hasPromotion = promotion && Number(promotion) > 0;
 
-  // Vérifie si la date d'ajout du produit dépasse une semaine
-  function checkProductNew(dateAjout: string | undefined) {
-    if (!dateAjout) return false;
+  // Vérifie si le produit est récent (ajouté dans la semaine)
+  const isNewProduct = React.useMemo(() => {
+    if (!date) return false;
 
     const currentDate = new Date();
-    const productDate = new Date(dateAjout);
+    const productDate = new Date(date);
 
-    const differenceInTime = currentDate.getTime() - productDate.getTime();
-    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+    const differenceInDays =
+      (currentDate.getTime() - productDate.getTime()) / (1000 * 3600 * 24);
 
-    return differenceInDays <= 7; // Retourne true si c'est une semaine ou moins
-  }
+    return differenceInDays <= 7;
+  }, [date]);
 
-  // Calcul du pourcentage de réduction avec les deux premiers chiffres
-  function calculateDiscountPercentage(
-    prixOriginal: number,
-    prixReduit: number
-  ) {
-    if (prixOriginal <= 0 || prixReduit < 0 || prixReduit > prixOriginal) {
-      throw new Error(
-        "Les prix doivent être valides, et le prix réduit ne peut pas être supérieur au prix original."
-      );
-    }
+  // Calcul du pourcentage de réduction
+  const discountPercentage = React.useMemo(() => {
+    if (!hasPromotion) return null;
 
-    const discount = ((prixOriginal - prixReduit) / prixOriginal) * 100;
-    return discount.toFixed(2); // Renvoie le pourcentage avec deux décimales
-  }
+    const prixReduit = Number(promotion);
+    if (prix <= 0 || prixReduit <= 0 || prixReduit > prix) return null;
 
-  // Fonction pour gérer l'ajout au panier
-  function handleAddToCart() {
-    const productData = {
-      src,
-      alt,
-      nom,
-      prix,
-      promotion,
-      date,
-      description,
-    };
+    return ((1 - prixReduit / prix) * 100).toFixed();
+  }, [prix, promotion, hasPromotion]);
 
+  // Gestion de l'ajout au panier
+  const handleAddToCart = () => {
+    const productData = { src, alt, nom, prix, promotion, date, description };
     console.log("Produit ajouté au panier :", productData);
-
-    // Exemple : appeler une fonction pour ajouter le produit au panier
-    // addToCart(productData);
-  }
+    // Appelle une fonction pour ajouter au panier si nécessaire (ex : via un contexte global)
+  };
 
   return (
-    <div className="relative flex flex-col justify-start overflow-hidden bg-gray-6 w-[285px] h-96 hover:bg-gray-7 rounded-lg shadow-lg transition-all duration-500">
-      {/* Conteneur pour l'image */}
-      <div className="relative w-full h-full">
+    <div className="relative flex flex-col bg-gray-100  rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+      {/* Image et badges */}
+      <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
         <Image
           src={src}
           alt={alt}
           layout="fill"
           objectFit="cover"
-          className="transition-transform duration-500 transform"
+          className="hover:scale-105 transition-transform duration-500"
         />
-        {checkProductPromotion(promotion) && (
+        {/* Badge promotion */}
+        {hasPromotion && discountPercentage && (
           <Typography
             component="span"
             variant="caption3"
-            className="absolute flex flex-col items-center justify-center text-gray rounded-full shadow-lg w-[50px] h-[50px] bg-opacity-85 bg-white top-5 right-5"
+            className="absolute flex flex-col items-center justify-center top-4 right-4 bg-white text-gray-900 rounded-full shadow-md text-sm w-[50px] h-[50px]"
           >
-            {calculateDiscountPercentage(prix, Number(promotion))}%
+            -{discountPercentage}%
           </Typography>
         )}
-        {checkProductNew(date) && (
+        {/* Badge nouveauté flex flex-col items-center justify-center  */}
+        {isNewProduct && (
           <Typography
             component="span"
-            variant="caption3"
-            className="absolute flex flex-col items-center justify-center text-white rounded-full shadow-lg w-[50px] h-[50px] bg-opacity-85 bg-secondary top-5 right-5"
+            variant="caption4"
+            className="absolute flex flex-col items-center justify-center top-4 left-4 bg-secondary bg-opacity-85 text-white rounded-full shadow-md p-5  text-sm w-[50px] h-[50px] "
           >
             New
           </Typography>
         )}
       </div>
 
-      {/* Conteneur pour le texte */}
-      <div className="pb-2 pl-2 mt-4 space-x-2">
-        <Typography variant="h5" component="h3" weight="regular">
+      {/* Détails du produit */}
+      <div className="flex flex-col p-4">
+        <Typography variant="h5" component="h3" className="mb-2">
           {nom}
         </Typography>
-        <Typography variant="caption1" theme="gray">
+        <Typography variant="caption1" className="text-gray-500 mb-4">
           {description}
         </Typography>
-        <Typography className="mb-2 space-x-8">
-          <Typography variant="body" theme="black" component="span">
-            € {prix}
+
+        {/* Prix et promotion */}
+        <div className="flex items-center mb-4 space-x-4">
+          <Typography variant="body" className="text-black font-bold">
+            €{prix}
           </Typography>
-          {promotion && (
+          {hasPromotion && (
             <Typography
               variant="caption1"
-              component="span"
-              theme="gray"
-              className="line-through"
+              className="line-through text-gray-400"
             >
-              € {promotion}
+              €{promotion}
             </Typography>
           )}
-        </Typography>
+        </div>
+
+        {/* Bouton Ajouter au panier */}
         <Button variant="accent" size="small" action={handleAddToCart}>
           Ajouter au panier
         </Button>
@@ -141,4 +122,3 @@ export default function CartProduit({
     </div>
   );
 }
-

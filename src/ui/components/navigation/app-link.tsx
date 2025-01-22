@@ -34,8 +34,8 @@ export const footerApplicationUsers: AppLinks[] = [
     type: "internal"
   },
   {
-    label: "A propos",
-    baseUrl: "/propos",
+    label: "Nouveaux arrivants",
+    baseUrl: "/nouveaux-arrivants",
     type: "internal"
   },
   {
