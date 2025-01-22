@@ -5,12 +5,15 @@ import Image from "next/image";
 import React from "react";
 import Typography from "@/ui/designSystem/typography/typography";
 import Button from "@/ui/designSystem/button/button";
+import { useRouter } from "next/router";
 
 export default function Decouvrir() {
+  const router = useRouter(); // Remplacer useNavigate par useRouter
+  const pageShop =() => {router.push('shop')};
   return (
     <div className="bg-white">
       <Container className="flex flex-wrap overflow-visible lg:flex-nowrap">
-        <div className="flex-1 space-y-6 relative p-10">
+        <div className="flex-1 space-y-6 relative p-2 md:p-10">
           {/* Titre principal */}
           <Typography variant="h2" className="text-gray-900 font-bold">
             TROUVEZ VOTRE PRODUIT FAVORI EN FONCTION
@@ -28,6 +31,7 @@ export default function Decouvrir() {
             variant="accent"
             size="medium"
             className="mt-4 sm:self-start rounded-full"
+            action={pageShop}
           >
             Visitez la boutique
           </Button>
@@ -64,7 +68,7 @@ export default function Decouvrir() {
               layout="fill"
               objectFit="contain"
               objectPosition="center"
-              className="rounded-lg border-4 border-white"
+              className="rounded-lg border-4 border-white scale-75"
             />
           </div>
         </div>

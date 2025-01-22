@@ -6,6 +6,7 @@ import Typography from "@/ui/designSystem/typography/typography";
 import CartProduit from "./cartProduit";
 import { dbProduits } from "./produitsDB";
 import Button from "@/ui/designSystem/button/button";
+import { useRouter } from "next/router";
 
 // Définition de l'interface Produit
 interface Produit {
@@ -21,20 +22,22 @@ interface Produit {
 }
 
 export default function Produits() {
+  const router = useRouter(); // Remplacer useNavigate par useRouter
+  const pageShop =() => {router.push('shop')};
   // Fonction pour afficher un nombre limité de produits
   const getLimitedProducts = (products: Produit[], limit: number = 8): Produit[] => {
     return products.slice(0, limit); // Retourne seulement les premiers "limit" produits
   };
 
   return (
-    <Container className="my-12 bg-white">
+    <Container className="py-6 my-6 bg-white">
       {/* Titre de la section */}
       <Typography component="h2" variant="h2" className="text-center mb-6">
         Nos Produits
       </Typography>
 
       {/* Grille des produits */}
-      <div className="grid grid-cols-2 m:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 m:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6">
         {getLimitedProducts(dbProduits).map((produit) => (
           <CartProduit
             key={produit.id}
@@ -51,7 +54,7 @@ export default function Produits() {
 
       {/* Bouton "Voir plus" */}
       <div className="flex justify-center mt-8">
-        <Button variant="outline">Voir plus</Button>
+        <Button variant="outline" action={pageShop}>Voir plus</Button>
       </div>
     </Container>
   );

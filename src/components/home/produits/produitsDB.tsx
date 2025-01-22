@@ -65,7 +65,7 @@ export const dbProduits = [
   },
   {
     id: 7,
-    src: "/assets/images/Slide4.jpg",
+    src: "/assets/images/Slide4.png",
     alt: "Slide 7",
     prix: 11000,
     nom: "Produit 7",
