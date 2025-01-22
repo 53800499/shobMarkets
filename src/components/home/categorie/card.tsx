@@ -11,7 +11,7 @@ interface Props {
 
 export default function Card({ src, alt, nom }: Props) {
   return (
-    <div className="relative flex flex-col items-center justify-center overflow-hidden bg-gray-200 rounded-lg w-[381px] h-96">
+    <div className="relative flex flex-col items-center justify-center overflow-hidden bg-gray-200 rounded-lg max-w-[381px] h-96">
       {/* Conteneur pour l'image */}
       <div className="relative w-full h-full">
         <Image

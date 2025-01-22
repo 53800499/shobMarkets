@@ -68,7 +68,7 @@ export default function Navigation() {
         {/* Desktop Menu */}
         <div className="items-center hidden pb-3 lg:flex gap-7">
           <Typography
-            variant="caption1"
+            variant="caption4"
             component="div"
             className="space-x-4 text-sm sm:text-base md:text-lg lg:text-xl"
           >
@@ -139,12 +139,12 @@ export default function Navigation() {
             <ActiveLink href="/shop" className="block py-2 text-lg sm:text-xl">
               Boutique
             </ActiveLink>
-            <ActiveLink
+            {/* <ActiveLink
               href="/nouveaux-arrivants"
               className="block py-2 text-lg sm:text-xl"
             >
               Nouveaux Arrivants
-            </ActiveLink>
+            </ActiveLink> */}
             <ActiveLink
               href="/contact"
               className="block py-2 text-lg sm:text-xl"
@@ -163,7 +163,7 @@ export default function Navigation() {
               placeholder="Rechercher un produit..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="flex-grow text-sm text-gray-700 bg-transparent outline-none"
+              className="flex-grow text-gray-700 bg-transparent outline-none"
             />
             <button type="submit" className="text-gray-600">
               <FaSearch size={18} />
