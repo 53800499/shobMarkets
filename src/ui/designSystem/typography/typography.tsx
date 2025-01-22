@@ -37,21 +37,21 @@ export default function Typography({
 }: Props) {
   // Styles pour les variantes
   const variantStyles: Record<string, string> = {
-    display: "text-6xl md:text-8xl",
-    h1: "text-5xl md:text-7xl",
-    h2: "text-4xl md:text-6xl",
-    h3: "text-3xl md:text-5xl",
-    h4: "text-2xl md:text-4xl",
-    h5: "text-xl md:text-3xl",
-    lead: "text-2xl md:text-xl",
-    "body-lg": "text-lg md:text-xl",
-    body: "text-base md:text-lg",
+    display: "text-6xl lg:text-8xl",
+    h1: "text-5xl lg:text-7xl",
+    h2: "text-4xl lg:text-6xl",
+    h3: "text-3xl lg:text-5xl",
+    h4: "text-2xl lg:text-4xl",
+    h5: "text-xl lg:text-3xl",
+    lead: "text-2xl lg:text-xl",
+    "body-lg": "text-lg lg:text-xl",
+    body: "text-base lg:text-lg",
     "body-base": "text-base",
     "body-sm": "text-sm",
-    caption1: "text-caption1 md:text-sm",
-    caption2: "text-caption2 md:text-sm",
-    caption3: "text-caption3 md:text-sm",
-    caption4: "text-caption4 md:text-sm",
+    caption1: "text-caption1 lg:text-sm",
+    caption2: "text-caption2 lg:text-sm",
+    caption3: "text-caption3 lg:text-sm",
+    caption4: "text-caption4 lg:text-sm",
   };
 
   // Couleurs dynamiques

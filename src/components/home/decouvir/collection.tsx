@@ -13,11 +13,11 @@ export default function Collection({ className }: Props) {
   return (
     <div
       className={clsx(
-        "z-10 p-5 bg-primary-1 max-w-[643px] min-w-[143px] mx-8 overflow-hidden  flex flex-col ",
+        "z-10 p-5 bg-primary-1 max-w-[543px] min-w-[143px] mx-8 overflow-hidden bg-opacity-85 flex flex-col ",
         className
       )}
     >
-      <Typography variant="caption2" className="md:my-3 sm:text-left">
+      <Typography variant="caption1" className="md:my-3 sm:text-left">
         Nouvel arrivant
       </Typography>
       <Typography
@@ -34,7 +34,7 @@ export default function Collection({ className }: Props) {
         votre garde-robe avec des créations modernes et durables !
       </Typography>
       <Button variant="accent" size="medium" className=" sm:self-start">
-        Boutique
+        Commander
       </Button>
     </div>
   );

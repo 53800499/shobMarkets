@@ -8,14 +8,20 @@ import Button from "@/ui/designSystem/button/button";
 import { useRouter } from "next/router";
 
 export default function Decouvrir() {
-  const router = useRouter(); // Remplacer useNavigate par useRouter
-  const pageShop =() => {router.push('shop')};
+  const router = useRouter();
+
+  // Navigation vers la boutique
+  const pageShop = () => {
+    router.push("/shop");
+  };
+
   return (
     <div className="bg-white">
-      <Container className="flex flex-wrap overflow-visible lg:flex-nowrap">
-        <div className="flex-1 space-y-6 relative p-2 md:p-10">
+      {/* Section Desktop */}
+      <Container className="flex flex-wrap sm:flex-nowrap overflow-visible">
+        <div className="flex-1 space-y-2 sm:space-y-6 relative p-6 lg:p-10">
           {/* Titre principal */}
-          <Typography variant="h2" className="text-gray-900 font-bold">
+          <Typography variant="h4" className="text-gray-900 font-bold">
             TROUVEZ VOTRE PRODUIT FAVORI EN FONCTION
           </Typography>
 
@@ -25,54 +31,114 @@ export default function Decouvrir() {
             pensés pour révéler votre individualité et répondre à votre sens du
             style.
           </Typography>
-
-          {/* Bouton Boutique */}
-          <Button
-            variant="accent"
-            size="medium"
-            className="mt-4 sm:self-start rounded-full"
-            action={pageShop}
-          >
-            Visitez la boutique
-          </Button>
+          <div className="hidden sm:flex">
+            {/* Bouton Boutique */}
+            <Button
+              variant="accent"
+              size="medium"
+              className="mt-4 rounded-full transition-transform transform hover:scale-105"
+              action={pageShop}
+            >
+              Visitez la boutique
+            </Button>
+          </div>
+          <div className="sm:hidden">
+            {/* Bouton Boutique */}
+            <Button
+              variant="accent"
+              size="medium"
+              className="mt-4 rounded-full w-full transition-transform transform hover:scale-105"
+              action={pageShop}
+            >
+              Visitez la boutique
+            </Button>
+          </div>
 
           {/* Statistiques */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
-            {[
-              { count: "200+", label: "Marques internationales" },
-              { count: "2,000+", label: "Produits de haute qualité" },
-              { count: "200+", label: "Clients satisfaits" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <Typography variant="h3" className="text-gray-900">
-                  {stat.count}
-                </Typography>
-                <Typography
-                  variant="caption3"
-                  theme="gray"
-                  className="text-gray-500"
-                >
-                  {stat.label}
-                </Typography>
-              </div>
-            ))}
+          <div className="flex flex-row justify-center items-center gap-6 md:mt-8">
+            <div className="text-center m-0 p-0">
+              <Typography variant="h3" className="text-gray-900 font-bold">
+                200+
+              </Typography>
+              <Typography
+                variant="caption3"
+                theme="gray"
+                className="text-gray-500"
+              >
+                Marques internationales
+              </Typography>
+            </div>
+            <div className="h-20 w-[2px] bg-gray-3 mx-auto"></div>
+            <div className="text-center">
+              <Typography variant="h3" className="text-gray-900 font-bold">
+                2,000+
+              </Typography>
+              <Typography
+                variant="caption3"
+                theme="gray"
+                className="text-gray-500"
+              >
+                Produits de haute qualité
+              </Typography>
+            </div>
+            <div className="h-20 w-[2px] bg-gray-3 mx-auto hidden m:flex"></div>
+
+            <div className="text-center hidden m:flex">
+              <Typography variant="h3" className="text-gray-900 font-bold">
+                200+
+              </Typography>
+              <Typography
+                variant="caption3"
+                theme="gray"
+                className="text-gray-500"
+              >
+                Clients satisfaits
+              </Typography>
+            </div>
+          </div>
+          <div className="justify-center flex-1 m:hidden mt-2">
+            <div className="text-center  ">
+              <Typography variant="h3" className="text-gray-900 font-bold">
+                200+
+              </Typography>
+              <Typography
+                variant="caption3"
+                theme="gray"
+                className="text-gray-500"
+              >
+                Clients satisfaits
+              </Typography>
+            </div>
           </div>
         </div>
 
         {/* Image */}
-        <div className="relative w-full lg:w-1/2 mt-6 lg:mt-0">
-          <div className="relative w-full h-64 lg:h-full">
+        <div className="relative w-full sm:w-1/2 sm:mt-6 sm:mt-0 overflow-hidden">
+          <div className="relative w-full h-96 sm:h-full">
             <Image
-              src="/assets/images/accueil.jpg"
+              src="/assets/images/accueils.jpg"
               alt="Decouvrir"
               layout="fill"
               objectFit="contain"
               objectPosition="center"
-              className="rounded-lg border-4 border-white scale-75"
+              className="rounded-lg shadow-md transition-transform transform hover:scale-105"
             />
           </div>
         </div>
       </Container>
+
+      {/* Section Mobile */}
+      {/* <Container className="relative h-[70vh] lg:hidden overflow-visible">
+        <Image
+          src="/assets/images/Slide1.png"
+          alt="Decouvrir"
+          layout="fill"
+          objectPosition="center"
+          objectFit="cover"
+          className="absolute top-[-10%] left-[-10%] rounded-lg shadow-lg"
+        />
+        <Collection className="absolute p-5 bg-white bg-opacity-80 rounded-lg shadow-lg bottom-10 right-10" />
+      </Container> */}
     </div>
   );
 }
