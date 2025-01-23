@@ -6,12 +6,12 @@ import React from "react";
 
 export default function CartTotal({ totalAmount = 2500 }) {
   return (
-    <div className="w-full max-w-sm p-6 mx-auto mb-6 text-center rounded-lg shadow-md  bg-primary-1">
+    <div className="w-full max-w-sm p-6 mx-auto mb-6 text-center rounded-lg shadow   bg-primary-1">
       {/* Titre */}
       <Typography
         variant="h4"
         component="h4"
-        className="mb-4 text-center text-gray-800"
+        className="mb-4 text-center text-primary"
       >
         Totaux des paniers
       </Typography>

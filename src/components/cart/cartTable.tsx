@@ -5,6 +5,7 @@ import Image from "next/image";
 import { RiDeleteBinLine } from "react-icons/ri";
 import Container from "@/ui/components/container/container";
 import CartTotal from "./cartTotal";
+import Typography from "@/ui/designSystem/typography/typography";
 
 export default function CartTable() {
   const [cartItems, setCartItems] = useState([
@@ -12,6 +13,8 @@ export default function CartTable() {
       id: 1,
       image: "/assets/images/Slide2.png",
       name: "Asgaard sofa",
+      size: [42, 43, 44],
+      color: ["red", "green", "blue"],
       price: 250000,
       quantity: 1
     },
@@ -19,6 +22,8 @@ export default function CartTable() {
       id: 2,
       image: "/assets/images/Slide2.png",
       name: "Asgaard sofa",
+      size: [42, 43, 44],
+      color: ["red", "green", "blue"],
       price: 250000,
       quantity: 1
     },
@@ -26,6 +31,8 @@ export default function CartTable() {
       id: 3,
       image: "/assets/images/Slide2.png",
       name: "Asgaard sofa",
+      size: [42, 43, 44],
+      color: ["red", "green", "blue"],
       price: 250000,
       quantity: 1
     }
@@ -46,10 +53,10 @@ export default function CartTable() {
   };
 
   return (
-    <Container className="flex flex-wrap gap-8 my-4 md:flex-row md:justify-between md:items-start">
+    <Container className="flex flex-wrap gap-8 shadow bg-white md:flex-row p-6 md:justify-between md:items-start">
       {/* Tableau des articles */}
-      <div className="w-full p-6 bg-white rounded-lg shadow-lg md:w-3/5">
-        <table className="w-full">
+{/*       <div className="w-full p-6 rounded-lg shadow md:w-3/5">
+ */}        {/* <table className="w-full">
           <thead>
             <tr className="text-left text-gray bg-primary-1">
               <th className="p-4 text-sm font-medium">Produits</th>
@@ -109,8 +116,69 @@ export default function CartTable() {
               </tr>
             ))}
           </tbody>
-        </table>
-      </div>
+        </table> */}
+        <div className=" bg-primary-1 w-full p-6 rounded-lg shadow md:w-3/5  p-4 space-y-4">
+          {cartItems.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-between border-b border-primary pb-4 last:border-none"
+            >
+              {/* Image Section */}
+              <div className="relative w-36 h-36 overflow-hidden rounded">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg"
+                />
+              </div>
+
+              {/* Details Section */}
+              <div className="flex-1 ml-4">
+                <div className="flex items-center justify-between">
+                  <Typography variant="h4" className=" text-primary">
+                    {item.name}
+                  </Typography>
+
+                  {/* Action Section */}
+                  <button
+                    onClick={() => handleDelete(item.id)}
+                    className="text-primary hover:text-red-700 transition duration-200"
+                  >
+                    <RiDeleteBinLine size={24} />
+                  </button>
+                </div>
+
+                <div className=" items-center gap-4 mt-2">
+                  <Typography variant="body" className="">
+                    Size: <span className="text-gray-3">{item.size}</span>
+                  </Typography>
+                  <Typography variant="body" className="">
+                    Color: <span className="text-gray-3">{item.color}</span>
+                  </Typography>
+                </div>
+                <div className="flex items-center justify-between">
+                  <Typography component="h4" className="text-lg font-semibold text-gray-800">
+                    € {item.price}
+                  </Typography>
+
+                  {/* Action Section */}
+                  <input
+                    type="number"
+                    min="1"
+                    className="w-16 text-center border border-primary rounded"
+                    value={item.quantity}
+                    onChange={(e) =>
+                      handleQuantityChange(item.id, Number(e.target.value))
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      {/* </div> */}
 
       {/* Affichage du total général */}
       <div className="w-full md:w-1/3">
