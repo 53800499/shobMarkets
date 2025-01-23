@@ -1,7 +1,6 @@
 /** @format */
 
-import Contain from "@/components/shop/contain/contain";
-import Navbar from "@/components/shop/navbar/navbar";
+import ShopContain from "@/components/shop/contain/shop.contain";
 import QualiteContainer from "@/components/shop/qualite/qualite.container";
 import ShobLink from "@/components/shop/shobLink/shobLink";
 import Layout from "@/ui/components/layout/layout";
@@ -11,12 +10,10 @@ import React from "react";
 export default function Shop() {
   return (
     <>
-      <Seo title="BOUTIQUE" description="E-commerce" />
+      <Seo title="Boutique" description="Présentaion de nos produits" />
 
       <Layout isDisplayCreadCrumbs={false}>
-        <ShobLink />
-        <Navbar/>
-        <Contain/>
+        <ShobLink /><ShopContain/>
         <QualiteContainer/>
       </Layout>
     </>
