@@ -41,6 +41,7 @@ export default function Produits() {
         {getLimitedProducts(dbProduits).map((produit) => (
           <CartProduit
             key={produit.id}
+            id={produit.id}
             src={produit.src}
             alt={produit.alt}
             prix={produit.prix}

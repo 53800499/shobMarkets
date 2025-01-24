@@ -6,13 +6,11 @@ import clsx from "clsx";
 interface Props {
   children: React.ReactNode;
   className?: string;
-  style?: React.CSSProperties; // Définit les style en tant qu'objet CSS valide
 }
 
-export default function Container({ children, className, style }: Props) {
+export default function Container({ children, className }: Props) {
   return (
-    <div
-      style={style} // Applique les style en ligne ici
+    <div // Applique les style en ligne ici
       className={clsx(
         className,
         "w-full max-w-8xl mx-auto space-y-5",

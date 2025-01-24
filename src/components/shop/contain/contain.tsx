@@ -28,6 +28,7 @@ export default function Contain({ produits }: ContainProps) {
         {currentProducts.map((produit, index) => (
           <CartProduit
             key={index}
+            id={produit.id}
             src={produit.src}
             alt={produit.alt}
             nom={produit.nom}

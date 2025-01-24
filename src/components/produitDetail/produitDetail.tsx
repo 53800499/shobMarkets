@@ -39,6 +39,7 @@ export default function ProduitDetail({
   categorie,
   quantity = 1 // Défaut à 1 si non défini
 }: ProduitDetailProps) {
+  // Appel de `useCart` au bon endroit (dans le composant fonctionnel)
   const [currentQuantity, setCurrentQuantity] = useState(quantity);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | number | null>(
@@ -56,9 +57,11 @@ export default function ProduitDetail({
     );
     // Ajouter la logique pour ajouter au panier
   };
+  // Gestion de l'ajout au panier
+  
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 w-full ">
       <Typography variant="h2" component="h2">
         {nom}
       </Typography>
@@ -112,16 +115,16 @@ export default function ProduitDetail({
         </Typography>
         <div className="flex gap-4">
           {colors.map((color, index) => (
-            <button
+            <Button
               key={index}
               className={`w-10 h-10 rounded-full ${color.code} ${
                 selectedColor === color.name ? "ring-2 ring-primary" : ""
               }`}
-              onClick={() => setSelectedColor(color.name)}
+              action={() => setSelectedColor(color.name)}
               aria-label={`Choisir la couleur ${color.name}`}
             >
               {color.icon && color.icon}
-            </button>
+            </Button>
           ))}
         </div>
       </div>

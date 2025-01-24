@@ -2,11 +2,12 @@
 
 import React from "react";
 import Image from "next/image";
-import Button from "@/ui/designSystem/button/button";
 import Typography from "@/ui/designSystem/typography/typography";
 import { RiStarFill } from "react-icons/ri";
+import Link from "next/link";
 
 interface Produit {
+  id: number;
   src: string;
   alt: string;
   nom: string;
@@ -17,14 +18,15 @@ interface Produit {
 }
 
 export default function CartProduit({
+  id,
   src,
   alt,
   nom,
   prix,
   promotion,
   date,
-  description
 }: Produit) {
+
   // Vérifie si le produit a une promotion active
   const hasPromotion = promotion && Number(promotion) > 0;
 
@@ -51,17 +53,11 @@ export default function CartProduit({
     return ((1 - prixReduit / prix) * 100).toFixed();
   }, [prix, promotion, hasPromotion]);
 
-  // Gestion de l'ajout au panier
-  const handleAddToCart = () => {
-    const productData = { src, alt, nom, prix, promotion, date, description };
-    console.log("Produit ajouté au panier :", productData);
-    // Appelle une fonction pour ajouter au panier si nécessaire (ex : via un contexte global)
-  };
-
   return (
-    <div className="relative flex flex-col bg-gray-100  rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <Link href={`/detail-produit/${id}`}>
+    <div className="relative flex flex-col bg-gray-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
       {/* Image et badges */}
-      <div className="relative w-full md:h-48 h-24 overflow-hidden rounded-t-lg">
+      <div className="relative w-full md:h-48 h-24 sm:h-44 overflow-hidden rounded-t-lg">
         <Image
           src={src}
           alt={alt}
@@ -74,17 +70,17 @@ export default function CartProduit({
           <Typography
             component="span"
             variant="caption4"
-            className="absolute flex flex-col items-center justify-center md:top-4 md:right-4 bg-white text-gray-900 rounded-full shadow-md md:w-[50px] md:h-[50px] w-[30px] h-[30px]  top-1 right-1 bg-opacity-85"
+            className="absolute flex flex-col items-center justify-center md:top-4 md:right-4 bg-white text-gray-900 rounded-full shadow-md md:w-[50px] md:h-[50px] w-[30px] h-[30px] top-1 right-1 bg-opacity-85"
           >
             -{discountPercentage}%
           </Typography>
         )}
-        {/* Badge nouveauté flex flex-col items-center justify-center  */}
+        {/* Badge nouveauté */}
         {isNewProduct && (
           <Typography
             component="span"
             variant="caption4"
-            className="absolute flex flex-col items-center justify-center top-1 left-1 md:top-4 md:left-4 bg-secondary bg-opacity-85 text-white rounded-full shadow-md md:p-5 w-[30px] h-[30px] md:w-[50px] md:h-[50px] "
+            className="absolute flex flex-col items-center justify-center top-1 left-1 md:top-4 md:left-4 bg-secondary bg-opacity-85 text-white rounded-full shadow-md md:p-5 w-[30px] h-[30px] md:w-[50px] md:h-[50px]"
           >
             New
           </Typography>
@@ -98,12 +94,15 @@ export default function CartProduit({
         </Typography>
         <Typography variant="caption1" className="text-gray-500 md:mb-4">
           <div className="flex space-x-2 text-yellow-500">
-            <Typography variant="caption4" className="text-gray-4 flex items-center gap-1">
+            <Typography
+              variant="caption4"
+              className="text-gray-4 flex items-center gap-1"
+            >
               <RiStarFill className="text-yellow" />
-              <RiStarFill className="text-yellow " />
-              <RiStarFill className="text-yellow " />
-              <RiStarFill className="text-yellow " />
-              <RiStarFill className="text-yellow " />
+              <RiStarFill className="text-yellow" />
+              <RiStarFill className="text-yellow" />
+              <RiStarFill className="text-yellow" />
+              <RiStarFill className="text-yellow" />
             </Typography>
             <Typography variant="caption4" className="text-gray-4">
               | 4.5/5
@@ -117,20 +116,13 @@ export default function CartProduit({
             €{prix}
           </Typography>
           {hasPromotion && (
-            <Typography
-              variant="caption1"
-              className="line-through text-gray-3"
-            >
+            <Typography variant="caption1" className="line-through text-gray-3">
               €{promotion}
             </Typography>
           )}
         </div>
-
-        {/* Bouton Ajouter au panier */}
-        <Button variant="accent" size="produit" className="my-2" action={handleAddToCart}>
-          Ajouter au panier
-        </Button>
       </div>
     </div>
+    </Link>
   );
 }

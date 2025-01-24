@@ -1,4 +1,27 @@
+
 export const dbProduits = [
+  {
+    id: 1,
+    src: "/images/product-1.jpg",
+    alt: "Product 1",
+    prix: 100,
+    nom: "Produit 1",
+    categorie: "Catégorie A",
+    dateAjout: "2024-01-01",
+    description: "Description du produit 1",
+    description1: "Description courte",
+    promotion: 15,
+    images: [{ src: "/images/product-1-1.jpg", alt: "Image 1" }],
+    colors: [{ id: 1, name: "Red", hex: "#FF0000" }],
+    sizes: ["S", "M", "L"]
+  },
+  // Autres produits...
+];
+
+
+
+
+/* export const dbProduits = [
   // Produits récents
   {
     id: 1,
@@ -6,105 +29,286 @@ export const dbProduits = [
     alt: "Slide 1",
     prix: 15000,
     nom: "Produit 1",
-    dateAjout: "2025-01-10T12:00:00Z",
-    categorie: "Produit",
+    categorie: "Alternative",
+    dateAjout: "2024-01-10T12:00:00Z", // Produit ajouté il y a 7 jours
     description: "Produit récent",
+    description1:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi totam fugit, esse ex nostrum facere minus. Reprehenderit laborum eius illo.",
     promotion: 7500,
+    images: [
+      { id:1,src: "/assets/images/Slide1.png", alt: "Image 1 description" },
+      { id:2,src: "/assets/images/Slide2.jpg", alt: "Image 2 description" },
+      { id:3,src: "/assets/images/Slide3.png", alt: "Image 3 description" },
+      { id:4,src: "/assets/images/Slide4.png", alt: "Image 4 description" }
+    ],
+    colors: [
+      { id:1,name: "Rouge", code: "#FF0000" },
+      {id: 2, name: "Bleu", code: "#0000FF" },
+    ],
+    sizes: ["40", "37", "52"]
   },
   {
     id: 2,
-    src: "/assets/images/Slide2.jpg",
-    alt: "Slide 2",
-    prix: 25000,
-    nom: "Produit 2",
-    dateAjout: "2025-01-12T12:00:00Z",
-    categorie: "Chaussure",
+    src: "/assets/images/Slide1.png",
+    alt: "Slide 1",
+    prix: 15000,
+    nom: "Produit 1",
+    categorie: "ALiments",
+    dateAjout: "2025-01-23T12:00:00Z", // Produit ajouté il y a 7 jours
     description: "Produit récent",
+    description1:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi totam fugit, esse ex nostrum facere minus. Reprehenderit laborum eius illo.",
+    promotion: 7500,
+    images: [
+      { id:1,src: "/assets/images/Slide1.png", alt: "Image 1 description" },
+      { id:2,src: "/assets/images/Slide2.jpg", alt: "Image 2 description" },
+      { id:3,src: "/assets/images/Slide3.png", alt: "Image 3 description" },
+      { id:4,src: "/assets/images/Slide4.png", alt: "Image 4 description" }
+    ],
+    colors: [
+      { id:1,name: "Rouge", code: "#FF0000" },
+      {id: 2, name: "Bleu", code: "#0000FF" },
+    ],
+    sizes: ["40", "37", "52"]
   },
   {
     id: 3,
-    src: "/assets/images/Slide3.png",
-    alt: "Slide 3",
-    prix: 35000,
-    nom: "Produit 3",
-    dateAjout: "2025-01-13T12:00:00Z",
+    src: "/assets/images/Slide1.png",
+    alt: "Slide 1",
+    prix: 15000,
+    nom: "Produit 1",
     categorie: "Chaussure",
+    dateAjout: "2025-01-10T12:00:00Z", // Produit ajouté il y a 7 jours
     description: "Produit récent",
+    description1:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi totam fugit, esse ex nostrum facere minus. Reprehenderit laborum eius illo.",
+    promotion: 7500,
+    images: [
+      { id:1,src: "/assets/images/Slide1.png", alt: "Image 1 description" },
+      { id:2,src: "/assets/images/Slide2.jpg", alt: "Image 2 description" },
+      { id:3,src: "/assets/images/Slide3.png", alt: "Image 3 description" },
+      { id:4,src: "/assets/images/Slide4.png", alt: "Image 4 description" }
+    ],
+    colors: [
+      { id:1,name: "Rouge", code: "#FF0000" },
+      {id: 2, name: "Bleu", code: "#0000FF" },
+    ],
+    sizes: ["40", "37", "52"]
   },
   {
     id: 4,
-    src: "/assets/images/Slide4.png",
-    alt: "Slide 4",
-    prix: 85000,
-    nom: "Produit 4",
-    dateAjout: "2025-01-14T12:00:00Z",
+    src: "/assets/images/Slide1.png",
+    alt: "Slide 1",
+    prix: 15000,
+    nom: "Produit 1",
     categorie: "Chaussure",
+    dateAjout: "2025-01-10T12:00:00Z", // Produit ajouté il y a 7 jours
     description: "Produit récent",
-    promotion: 55000,
+    description1:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi totam fugit, esse ex nostrum facere minus. Reprehenderit laborum eius illo.",
+    promotion: 7500,
+    images: [
+      { id:1,src: "/assets/images/Slide1.png", alt: "Image 1 description" },
+      { id:2,src: "/assets/images/Slide2.jpg", alt: "Image 2 description" },
+      { id:3,src: "/assets/images/Slide3.png", alt: "Image 3 description" },
+      { id:4,src: "/assets/images/Slide4.png", alt: "Image 4 description" }
+    ],
+    colors: [
+      { id:1,name: "Rouge", code: "#FF0000" },
+      {id: 2, name: "Bleu", code: "#0000FF" },
+    ],
+    sizes: ["40", "37", "52"]
   },
   {
     id: 5,
-    src: "/assets/images/Slide2.jpg",
-    alt: "Slide 5",
-    prix: 10000,
-    nom: "Produit 5",
-    dateAjout: "2025-01-15T12:00:00Z",
+    src: "/assets/images/Slide1.png",
+    alt: "Slide 1",
+    prix: 15000,
+    nom: "Produit 1",
     categorie: "Chaussure",
+    dateAjout: "2025-01-10T12:00:00Z", // Produit ajouté il y a 7 jours
     description: "Produit récent",
+    description1:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi totam fugit, esse ex nostrum facere minus. Reprehenderit laborum eius illo.",
+    promotion: 7500,
+    images: [
+      { id:1,src: "/assets/images/Slide1.png", alt: "Image 1 description" },
+      { id:2,src: "/assets/images/Slide2.jpg", alt: "Image 2 description" },
+      { id:3,src: "/assets/images/Slide3.png", alt: "Image 3 description" },
+      { id:4,src: "/assets/images/Slide4.png", alt: "Image 4 description" }
+    ],
+    colors: [
+      { id:1,name: "Rouge", code: "#FF0000" },
+      {id: 2, name: "Bleu", code: "#0000FF" },
+    ],
+    sizes: ["40", "37", "52"]
   },
   {
     id: 6,
-    src: "/assets/images/Slide3.png",
-    alt: "Slide 6",
-    prix: 22000,
-    nom: "Produit 6",
-    dateAjout: "2025-01-16T12:00:00Z",
-    categorie: "Chaussure",
+    src: "/assets/images/Slide1.png",
+    alt: "Slide 1",
+    prix: 15000,
+    nom: "Produit 1",
+    categorie: "ALiments",
+    dateAjout: "2025-01-10T12:00:00Z", // Produit ajouté il y a 7 jours
     description: "Produit récent",
-    promotion: 18000,
+    description1:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi totam fugit, esse ex nostrum facere minus. Reprehenderit laborum eius illo.",
+    promotion: 7500,
+    images: [
+      { id:1,src: "/assets/images/Slide1.png", alt: "Image 1 description" },
+      { id:2,src: "/assets/images/Slide2.jpg", alt: "Image 2 description" },
+      { id:3,src: "/assets/images/Slide3.png", alt: "Image 3 description" },
+      { id:4,src: "/assets/images/Slide4.png", alt: "Image 4 description" }
+    ],
+    colors: [
+      { id:1,name: "Rouge", code: "#FF0000" },
+      {id: 2, name: "Bleu", code: "#0000FF" },
+    ],
+    sizes: ["40", "37", "52"]
   },
   {
     id: 7,
-    src: "/assets/images/Slide4.png",
-    alt: "Slide 7",
-    prix: 11000,
-    nom: "Produit 7",
-    dateAjout: "2025-01-17T12:00:00Z",
-    categorie: "Chaussure",
+    src: "/assets/images/Slide1.png",
+    alt: "Slide 1",
+    prix: 15000,
+    nom: "Produit 1",
+    categorie: "ALiments",
+    dateAjout: "2025-01-10T12:00:00Z", // Produit ajouté il y a 7 jours
     description: "Produit récent",
+    description1:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi totam fugit, esse ex nostrum facere minus. Reprehenderit laborum eius illo.",
+    promotion: 7500,
+    images: [
+      { id:1,src: "/assets/images/Slide1.png", alt: "Image 1 description" },
+      { id:2,src: "/assets/images/Slide2.jpg", alt: "Image 2 description" },
+      { id:3,src: "/assets/images/Slide3.png", alt: "Image 3 description" },
+      { id:4,src: "/assets/images/Slide4.png", alt: "Image 4 description" }
+    ],
+    colors: [
+      { id:1,name: "Rouge", code: "#FF0000" },
+      {id: 2, name: "Bleu", code: "#0000FF" },
+    ],
+    sizes: ["40", "37", "52"]
   },
-
-  // Produits plus anciens
   {
     id: 8,
     src: "/assets/images/Slide1.png",
-    alt: "Slide 8",
-    prix: 16000,
-    nom: "Produit 8",
-    dateAjout: "2024-12-17T12:00:00Z",
-    categorie: "Chaussure",
-    description: "Produit ancien",
+    alt: "Slide 1",
+    prix: 15000,
+    nom: "Produit 1",
+    categorie: "ALiments",
+    dateAjout: "2025-01-10T12:00:00Z", // Produit ajouté il y a 7 jours
+    description: "Produit récent",
+    description1:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi totam fugit, esse ex nostrum facere minus. Reprehenderit laborum eius illo.",
+    promotion: 7500,
+    images: [
+      { id:1,src: "/assets/images/Slide1.png", alt: "Image 1 description" },
+      { id:2,src: "/assets/images/Slide2.jpg", alt: "Image 2 description" },
+      { id:3,src: "/assets/images/Slide3.png", alt: "Image 3 description" },
+      { id:4,src: "/assets/images/Slide4.png", alt: "Image 4 description" }
+    ],
+    colors: [
+      { id:1,name: "Rouge", code: "#FF0000" },
+      {id: 2, name: "Bleu", code: "#0000FF" },
+    ],
+    sizes: ["40", "37", "52"]
   },
   {
     id: 9,
-    src: "/assets/images/Slide3.png",
-    alt: "Slide 9",
-    prix: 19000,
-    nom: "Produit 9",
-    dateAjout: "2024-12-01T12:00:00Z",
-    categorie: "Produit",
-    description: "Produit ancien",
+    src: "/assets/images/Slide1.png",
+    alt: "Slide 1",
+    prix: 15000,
+    nom: "Produit 1",
+    categorie: "Alternative",
+    dateAjout: "2025-01-10T12:00:00Z", // Produit ajouté il y a 7 jours
+    description: "Produit récent",
+    description1:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi totam fugit, esse ex nostrum facere minus. Reprehenderit laborum eius illo.",
+    promotion: 7500,
+    images: [
+      { id:1,src: "/assets/images/Slide1.png", alt: "Image 1 description" },
+      { id:2,src: "/assets/images/Slide2.jpg", alt: "Image 2 description" },
+      { id:3,src: "/assets/images/Slide3.png", alt: "Image 3 description" },
+      { id:4,src: "/assets/images/Slide4.png", alt: "Image 4 description" }
+    ],
+    colors: [
+      { id:1,name: "Rouge", code: "#FF0000" },
+      {id: 2, name: "Bleu", code: "#0000FF" },
+    ],
+    sizes: ["40", "37", "52"]
   },
   {
     id: 10,
-    src: "/assets/images/Slide2.png",
-    alt: "Slide 10",
-    prix: 27000,
-    nom: "Produit 10",
-    dateAjout: "2024-11-25T12:00:00Z",
-    categorie: "Produit",
-    description: "Produit ancien",
-    promotion: 24000,
+    src: "/assets/images/Slide1.png",
+    alt: "Slide 1",
+    prix: 15000,
+    nom: "Produit 1",
+    categorie: "Alternative",
+    dateAjout: "2025-01-10T12:00:00Z", // Produit ajouté il y a 7 jours
+    description: "Produit récent",
+    description1:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi totam fugit, esse ex nostrum facere minus. Reprehenderit laborum eius illo.",
+    promotion: 7500,
+    images: [
+      { id:1,src: "/assets/images/Slide1.png", alt: "Image 1 description" },
+      { id:2,src: "/assets/images/Slide2.jpg", alt: "Image 2 description" },
+      { id:3,src: "/assets/images/Slide3.png", alt: "Image 3 description" },
+      { id:4,src: "/assets/images/Slide4.png", alt: "Image 4 description" }
+    ],
+    colors: [
+      { id:1,name: "Rouge", code: "#FF0000" },
+      {id: 2, name: "Bleu", code: "#0000FF" },
+    ],
+    sizes: ["40", "37", "52"]
   },
+  {
+    id: 11,
+    src: "/assets/images/Slide1.png",
+    alt: "Slide 1",
+    prix: 15000,
+    nom: "Produit 1",
+    categorie: "Alternative",
+    dateAjout: "2025-01-10T12:00:00Z", // Produit ajouté il y a 7 jours
+    description: "Produit récent",
+    description1:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi totam fugit, esse ex nostrum facere minus. Reprehenderit laborum eius illo.",
+    images: [
+      { id:1,src: "/assets/images/Slide1.png", alt: "Image 1 description" },
+      { id:2,src: "/assets/images/Slide2.jpg", alt: "Image 2 description" },
+      { id:3,src: "/assets/images/Slide3.png", alt: "Image 3 description" },
+      { id:4,src: "/assets/images/Slide4.png", alt: "Image 4 description" }
+    ],
+    colors: [
+      { id:1,name: "Rouge", code: "#FF0000" },
+      {id: 2, name: "Bleu", code: "#0000FF" },
+    ],
+    sizes: ["40", "37", "52"]
+  },
+  {
+    id: 12,
+    src: "/assets/images/Slide3.png",
+    alt: "Slide 1",
+    prix: 15000,
+    nom: "Produit 1",
+    categorie: "Alternative",
+    dateAjout: "2025-01-10T12:00:00Z", // Produit ajouté il y a 7 jours
+    description: "Produit récent",
+    description1:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi totam fugit, esse ex nostrum facere minus. Reprehenderit laborum eius illo.",
+    promotion: 7500,
+    images: [
+      { id:1,src: "/assets/images/Slide1.png", alt: "Image 1 description" },
+      { id:2,src: "/assets/images/Slide2.jpg", alt: "Image 2 description" },
+      { id:3,src: "/assets/images/Slide3.png", alt: "Image 3 description" },
+      { id:4,src: "/assets/images/Slide4.png", alt: "Image 4 description" }
+    ],
+    colors: [
+      { id:1,name: "Rouge", code: "#FF0000" },
+      {id: 2, name: "Bleu", code: "#0000FF" },
+    ],
+    sizes: ["40", "37", "52"]
+  }
   // Continuez de cette manière pour tous les autres produits...
-];
+]; */
