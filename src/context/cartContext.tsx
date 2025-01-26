@@ -22,6 +22,8 @@ interface Product {
 interface CartContextType {
   cart: Product[];
   addToCart: (product: Product) => void;
+  updateCartItem: (productId: string, quantity: number) => void;
+  removeCartItem: (productId: string) => void; // Nouvelle fonction pour supprimer un produit
 }
 
 // Créez le contexte avec un type explicite ou undefined
@@ -43,8 +45,22 @@ export function CartProvider({ children }: Context) {
     });
   };
 
+  // Fonction pour mettre à jour la quantité d'un produit dans le panier
+  const updateCartItem = (productId: string, quantity: number) => {
+    setCart((prevCart) => 
+      prevCart.map((product) => 
+        product.id === productId ? { ...product, quantity } : product
+      )
+    );
+  };
+
+  // Fonction pour supprimer un produit du panier
+  const removeCartItem = (productId: string) => {
+    setCart((prevCart) => prevCart.filter((product) => product.id !== productId));
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, updateCartItem, removeCartItem }}>
       {children}
     </CartContext.Provider>
   );

@@ -12,18 +12,20 @@ export default function CartTable() {
   const { cart, updateCartItem, removeCartItem } = useCart(); // Gestion via le contexte
 
   const calculateTotal = () => {
-    return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    return cart.reduce((acc, item) => acc + item.prix * item.quantity, 0);
   };
 
   const handleQuantityChange = (id: string | number, value: number) => {
     if (value > 0) {
-      updateCartItem(id, value); // Mise à jour via le contexte
+      updateCartItem(String(id), value); // Conversion explicite en string
     }
   };
 
   const handleDelete = (id: string | number) => {
-    removeCartItem(id); // Suppression via le contexte
+    removeCartItem(String(id)); // Conversion explicite en string
   };
+
+  console.log(cart);
 
   return (
     <Container className="flex flex-col sm:flex-rows gap-8 shadow bg-white md:flex-row p-6 md:justify-between md:items-start">
@@ -56,16 +58,18 @@ export default function CartTable() {
                   className="text-red-500 hover:text-red-700 transition duration-200"
                   aria-label="Supprimer l'article"
                 >
-                  <RiDeleteBinLine size={24} />
+                  <RiDeleteBinLine size={24} className="text-primary" />
                 </button>
               </div>
 
               <div className="flex items-center gap-4 mt-2">
                 <Typography variant="body">
-                  Taille : <span className="text-gray-600">{item.size}</span>
+                  Taille :{" "}
+                  <span className="text-gray-600">{item.selectedSize}</span>
                 </Typography>
                 <Typography variant="body">
-                  Couleur : <span className="text-gray-600">{item.color}</span>
+                  Couleur :{" "}
+                  <span className="text-gray-600">{item.selectedColor}</span>
                 </Typography>
               </div>
 

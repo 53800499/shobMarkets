@@ -52,4 +52,6 @@ export type produitType = {
   images: { id:number; src: string; alt: string }[];
   colors: { id: number; name: string; code: string }[];
   sizes: string[];
+  selectedColor?: string;
+  selectedSize?: string;
 };

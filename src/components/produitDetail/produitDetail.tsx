@@ -10,6 +10,7 @@ import {
   RiTwitterFill
 } from "react-icons/ri";
 import { produitType } from "@/types/produitType";
+import { useCart } from "@/context/cartContext";
 
 /* interface ColorOption {
   name: string; // Nom de la couleur (ex. "Rouge")
@@ -27,25 +28,27 @@ export default function ProduitDetail({ produit }: ProduitDetailProps) {
   const [selectedSize, setSelectedSize] = useState<string | number | null>(
     null
   );
+
   const [quantity, setQuantity] = useState(1);
 
-  const handleIncrementer = () => {
-    setQuantity(quantity + 1);
-  };
-  const handleDecrementer = () => {
-    setQuantity(quantity - 1);
+  const { addToCart } = useCart();
+
+  const updateQuantity = (amount: number) => {
+    setQuantity((prevQuantity) => Math.max(1, prevQuantity + amount));
   };
 
-  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  /* const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(e.target.value, 10);
     setQuantity(isNaN(newQuantity) || newQuantity < 1 ? 1 : newQuantity);
-  };
+  }; */
 
   const handleAddToCart = () => {
-    console.log(
-      `Produit ajouté : ID ${produit.id}, Quantité : ${quantity}, Couleur : ${selectedColor}, Taille : ${selectedSize}`
-    );
-    // Ajouter la logique pour ajouter au panier
+    if (selectedColor && selectedSize) {
+      addToCart({ ...produit, quantity, selectedColor, selectedSize });
+      console.log(
+        `Produit ajouté : ID ${produit.id}, Quantité : ${quantity}, Couleur : ${selectedColor}, Taille : ${selectedSize}`
+      );
+    }
   };
   // Gestion de l'ajout au panier
 
@@ -104,14 +107,15 @@ export default function ProduitDetail({ produit }: ProduitDetailProps) {
         </Typography>
         <div className="flex gap-4">
           {produit.colors.map((color, index) => (
-            <Button
+            <button
               key={index}
-              className={`w-10 h-10 rounded-full ${color.code} ${
+              className={`w-8 h-8 rounded-full ${
                 selectedColor === color.name ? "ring-2 ring-primary" : ""
               }`}
-              action={() => setSelectedColor(color.name)}
+              style={{ backgroundColor: color.code }} // Applique la couleur spécifique
+              onClick={() => setSelectedColor(color.name)}
               aria-label={`Choisir la couleur ${color.name}`}
-            ></Button>
+            ></button>
           ))}
         </div>
       </div>
@@ -146,11 +150,9 @@ export default function ProduitDetail({ produit }: ProduitDetailProps) {
           Sélectionnez la quantitée
         </Typography>
         <div className="flex flex-wrap items-center gap-4">
-          <div className="flex  gap-2">
+          <div className="flex gap-2">
             <button
-              onClick={() => {
-                handleIncrementer();
-              }}
+              onClick={() => updateQuantity(1)} // Augmente la quantité
               className="rounded bg-primary text-white items-center px-5 w-12 hover:shadow hover hover:scale-105 h-12"
             >
               +
@@ -161,18 +163,19 @@ export default function ProduitDetail({ produit }: ProduitDetailProps) {
               min="1"
               className="w-16 h-12 text-center border rounded border-primary"
               value={quantity}
-              onChange={handleQuantityChange}
+              onChange={(e) =>
+                setQuantity(Math.max(1, parseInt(e.target.value, 10) || 1))
+              }
               aria-label={`Quantité pour ${produit.nom}`}
             />
             <button
-              onClick={() => {
-                handleDecrementer();
-              }}
+              onClick={() => updateQuantity(-1)} // Diminue la quantité
               className="rounded bg-primary text-white items-center px-5 w-12 hover:shadow hover hover:scale-105 h-12"
             >
               -
             </button>
           </div>
+
           <div className="flex space-x-1">
             {/* Bouton Ajouter au panier */}
             <Button
