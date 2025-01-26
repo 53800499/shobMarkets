@@ -19,7 +19,7 @@ export default function Decouvrir() {
     <div className="bg-white">
       {/* Section Desktop */}
       <Container className="flex flex-wrap sm:flex-nowrap overflow-visible">
-        <div className="flex-1 space-y-2 sm:space-y-6 relative p-6 lg:p-10">
+        <div className="flex-1 space-y-2 sm:space-y-6 relative p-2 lg:p-10">
           {/* Titre principal */}
           <Typography variant="h4" className="text-gray-900 font-bold">
             TROUVEZ VOTRE PRODUIT FAVORI EN FONCTION

@@ -10,7 +10,7 @@ import React from "react";
 export default function Contact() {
   return (
     <>
-      <Seo title="BOUTIQUE" description="Contactez-nous" />
+      <Seo title="Markets" description="Contactez-nous" />
 
       <Layout isDisplayCreadCrumbs={false}>
         <ShobLink />

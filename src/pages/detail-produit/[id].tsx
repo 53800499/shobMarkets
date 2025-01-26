@@ -1,6 +1,6 @@
 /** @format */
 
-import { dbProduits } from "@/components/home/decouvir/sliderDB";
+import { dbProduits } from "@/components/home/produits/produitsDB";
 import ProduitDetailContainer from "@/components/produitDetail/produitDetail.container";
 import QualiteContainer from "@/components/shop/qualite/qualite.container";
 import { produitType } from "@/types/produitType";
@@ -19,7 +19,7 @@ export default function DetailProduit({ produit }: Props) {
 
   return (
     <>
-      <Seo title="BOUTIQUE" description="Detail du produit" />
+      <Seo title="Markets" description="Detail du produit" />
       <Layout isDisplayCreadCrumbs={false}>
         <ProduitDetailContainer produit={produit} />
         <QualiteContainer />

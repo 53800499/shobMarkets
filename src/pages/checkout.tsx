@@ -8,7 +8,7 @@ import React from 'react'
 export default function Checkout() {
   return (
     <>
-          <Seo title="BOUTIQUE" description="Caisse en ligne" />
+          <Seo title="Markets" description="Caisse en ligne" />
     
           <Layout isDisplayCreadCrumbs={false}>
             <ShobLink />

@@ -75,7 +75,7 @@ const ContactContainer = () => {
   return (
     <Container className="py-12 ">
       <div className="text-center space-y-6">
-        <Typography variant="h1" component="h1">
+        <Typography variant="h3" component="h3">
           Contactez-nous
         </Typography>
         <Typography variant="body" component="p" className="mb-8">
@@ -85,12 +85,12 @@ const ContactContainer = () => {
         </Typography>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center max-w-92">
-          <div className="space-y-6 justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-center max-w-92">
+          <div className="grid m:grid-cols-2 sm:grid-cols-1 space-y-2 justify-center ">
             <div className="flex space-x-4">
               <RiLock2Fill className="text-4xl mt-2"/>
               <div>
-                <Typography variant="h3" component="h3">
+                <Typography variant="h4" component="h4">
                   Adresse
                 </Typography>
                 <Typography variant="body">
@@ -101,7 +101,7 @@ const ContactContainer = () => {
             <div className="flex space-x-4">
               <RiPhoneFill className="text-4xl mt-2"/>
               <div>
-                <Typography variant="h3" component="h3">
+                <Typography variant="h4" component="h4">
                   Numéro de téléphone
                 </Typography>
                 <Typography variant="body">
@@ -114,7 +114,7 @@ const ContactContainer = () => {
             <div className="flex space-x-4">
               <RiLock2Fill className="text-4xl mt-2"/>
               <div>
-                <Typography variant="h3" component="h3">
+                <Typography variant="h4" component="h4">
                   Heure de travail
                 </Typography>
                 <Typography variant="body">
@@ -123,7 +123,7 @@ const ContactContainer = () => {
               </div>
             </div>
           </div>
-          <div className="space-y-8">
+          <div className="space-y-2 sm:space-y-4">
             {fields.map(renderInputField)}
             <button
               type="submit"

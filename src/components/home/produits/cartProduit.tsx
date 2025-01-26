@@ -55,7 +55,7 @@ export default function CartProduit({
 
   return (
     <Link href={`/detail-produit/${id}`}>
-    <div className="relative flex flex-col bg-gray-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div className="relative flex flex-col bg-gray-100 rounded-lg shadow-lg transition-shadow duration-900 hover:scale-105">
       {/* Image et badges */}
       <div className="relative w-full md:h-48 h-24 sm:h-44 overflow-hidden rounded-t-lg">
         <Image
@@ -63,7 +63,7 @@ export default function CartProduit({
           alt={alt}
           layout="fill"
           objectFit="cover"
-          className="hover:scale-105 transition-transform duration-500"
+          className=" transition-transform duration-500"
         />
         {/* Badge promotion */}
         {hasPromotion && discountPercentage && (

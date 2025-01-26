@@ -47,8 +47,9 @@ export type produitType = {
   dateAjout: string;
   description: string;
   description1: string;
+  quantity?: number;
   promotion: number;
-  images: { src: string; alt: string }[];
-  colors: { id: number; name: string; hex: string }[];
+  images: { id:number; src: string; alt: string }[];
+  colors: { id: number; name: string; code: string }[];
   sizes: string[];
 };

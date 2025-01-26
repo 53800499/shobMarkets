@@ -58,7 +58,7 @@ export default function ProduitComment() {
         {tabs.map((tab, index) => (
           <button
             key={index}
-            className={`tab-button px-6 py-3 text-gray-3 ${
+            className={`tab-button px-2 py-2 text-gray-3 ${
               activeTab === index
                 ? "font-bold text-black border-b-2 border-gray-1"
                 : "text-gray-500"
@@ -74,19 +74,19 @@ export default function ProduitComment() {
         {tabs[activeTab].content}
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6 mt-8 product-images">
-        <div className="relative min-w-[233px] min-h-[233px] max-w-[600px] max-h-[600px]">
+      <div className="flex flex-wrap justify-center gap-6 mt-2 sm:mt-8 product-images">
+        <div className="relative min-w-[283px] min-h-[143px] max-w-[600px] max-h-[600px]">
           <Image
             src="/assets/images/Slide1.png"
             alt="Produit 1"
             layout="responsive"
             width={381}
-            height={400}
+            height={450}
             objectFit="cover"
             className="rounded-lg shadow-lg"
           />
         </div>
-        <div className="relative min-w-[233px] min-h-[233px] max-w-[600px] max-h-[600px]">
+        <div className="relative min-w-[283px] min-h-[143px] max-w-[600px] max-h-[600px]">
           <Image
             src="/assets/images/Slide1.png"
             alt="Produit 2"

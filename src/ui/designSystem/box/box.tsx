@@ -9,7 +9,7 @@ interface Props{
 
 export default function Box({ children, className, padding_x="px-9", padding_y="py-9"}:Props) {
   return (
-    <div className={clsx("w-full border border-gray-400 rounded bg-white", className, padding_x, padding_y)}>
+    <div className={clsx("w-full border border-gray-4 rounded bg-white", className, padding_x, padding_y)}>
       {children}
     </div>
   )

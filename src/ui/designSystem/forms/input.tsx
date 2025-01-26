@@ -39,7 +39,7 @@ export const Input = <T extends FieldValues>({
         type={type}
         placeholder={placeholder}
         className={clsx(
-          "w-full font-light border border-gray-4 rounded placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary",
+          "w-full p-1 font-light border border-gray-4 rounded placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary",
           {
             "cursor-not-allowed": isLoading,
             "border-red-500 placeholder-red-500": errors[id],

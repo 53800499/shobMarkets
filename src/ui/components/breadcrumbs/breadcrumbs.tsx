@@ -22,7 +22,7 @@ export default function Breadcrumbs({ className, nom }: Props) {
   <div key={index} className="mt-5 ">
     <Link href={index > 0 ? `/${segments.slice(1, index + 1).join("/")}` : "/"}>
       <Typography
-        variant="h3"
+        variant="h4"
         component="span"
         className={clsx(
           segment !== lastSegment ? "text-gray-600" : "text-gray",
@@ -36,7 +36,7 @@ export default function Breadcrumbs({ className, nom }: Props) {
       )}
     </Link>
     {nom && index === segments.length - 1 && (
-      <span className="ml-2 text-bo">| {nom}</span>
+      <span className="ml-2 text-2xl">| {nom}</span>
     )}
   </div>
 ));

@@ -14,7 +14,7 @@ export default function LoginForm({ form }: Props) {
     <form onSubmit={handleSubmit(onSubmit)} className="pt-8 pb-5 space-y-4">
       <Input
         isLoading={isLoading}
-        placeholder="siki@gmail.com"
+        placeholder="email@gmail.com"
         type="email"
         register={register} // Passer correctement la fonction `register` typée
         errors={errors}

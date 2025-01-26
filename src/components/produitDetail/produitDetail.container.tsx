@@ -17,10 +17,10 @@ export default function ProduitDetailContainer({ produit }: Props) {
       <Breadcrumbs nom={produit.nom} className="bg-primary-1 py-auto" />
 
       <Container>
-        <div className="flex flex-wrap justify-center gap-8 my-8 lg:grid-cols-3">
-          <div className="flex flex-row space-x-4">
+        <div className="flex flex-col md:flex-row justify-center gap-8 my-2 lg:grid-cols-3">
+          <div className="flex flex-col custom:flex-row space-x-1 justify-center">
             {/* Liste des images secondaires */}
-            <div className="flex flex-col gap-1 min-w-sm:flex-row sm:gap-2">
+            <div className="hidden custom:flex flex-col gap-1 min-w-sm:flex-row sm:gap-2">
               {produit.images &&
                 produit.images.map((image) => (
                   <ListeImageProduit
@@ -32,7 +32,7 @@ export default function ProduitDetailContainer({ produit }: Props) {
             </div>
 
             {/* Image principale */}
-            <div className="relative w-auto">
+            <div className="relative w-auto ">
               <Image
                 src={produit.src}
                 alt={produit.alt}
@@ -40,22 +40,24 @@ export default function ProduitDetailContainer({ produit }: Props) {
                 width={481}
                 height={500}
                 objectFit="cover"
-                className="shadow-lg min-w-[433px] min-h-[500px] rounded-lg max-w-[600px] max-h-[700px] rounded"
+                className="shadow-lg min-w-[233px] min-h-[250px] rounded-lg max-w-[600px] max-h-[700px] md:max-w-[600px] md:max-h-[700px] md:min-w-[433px] md:min-h-[500px] rounded mx-auto"
               />
+            </div>
+            <div className="flex flex-row my-4 justify-center gap-2 custom:hidden max-h-12 ">
+              {produit.images &&
+                produit.images.map((image) => (
+                  <ListeImageProduit
+                    key={image.id}
+                    src={image.src}
+                    alt={image.alt}
+                  />
+                ))}
             </div>
           </div>
 
           {/* Détails du produit */}
           <ProduitDetail
-            id={produit.id}
-            nom={produit.nom}
-            prix={produit.prix}
-            promotion={produit.promotion}
-            description={produit.description1}
-            quantity={1}
-            sizes={produit.sizes}
-            colors={produit.colors}
-            categorie={produit.categorie}
+            produit={produit}
           />
         </div>
         <ProduitComment />

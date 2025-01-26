@@ -1,5 +1,5 @@
 
-export const dbProduits = [
+/* export const dbProduits = [
   {
     id: 1,
     src: "/images/product-1.jpg",
@@ -16,12 +16,12 @@ export const dbProduits = [
     sizes: ["S", "M", "L"]
   },
   // Autres produits...
-];
+]; */
 
 
 
 
-/* export const dbProduits = [
+  export const dbProduits = [
   // Produits récents
   {
     id: 1,
@@ -311,4 +311,4 @@ export const dbProduits = [
     sizes: ["40", "37", "52"]
   }
   // Continuez de cette manière pour tous les autres produits...
-]; */
+]; 

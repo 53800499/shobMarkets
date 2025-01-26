@@ -8,7 +8,7 @@ import React from 'react'
 export default function cart() {
   return (
     <>
-          <Seo title="BOUTIQUE" description="Panier de la boutique" />
+          <Seo title="Markets" description="Panier de la boutique" />
     
           <Layout isDisplayCreadCrumbs={false}>
             <ShobLink />

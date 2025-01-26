@@ -21,9 +21,9 @@ export default function Footer() {
   return (
     <div>
       <hr className="w-full border-gray-4" />
-      <Container className="flex justify-between pt-16 space-y-4 max-custom:flex-wrap md:space-y-0">
+      <Container className="flex justify-between pt-4 space-y-4 max-custom:flex-wrap md:space-y-0">
         <div className="flex flex-col space-y-4 min-w-[200px] me-2 md:w-1/4">
-          <Typography variant="body" theme="black" weight="medium">
+          <Typography variant="h4" theme="black" weight="medium">
             Markets
           </Typography>
           <Typography variant="caption1" theme="gray" className="mt-2">
@@ -32,8 +32,8 @@ export default function Footer() {
           </Typography>
         </div>
         {footNavigationList}
-        <div className="flex flex-col space-y-4 min-w-[300px] md:w-1/4">
-          <Typography variant="body" theme="black" weight="medium">
+        <div className="flex flex-col space-y-4 min-w-[290px] md:w-1/4">
+          <Typography variant="h4" theme="black" weight="medium">
             Newsletter
           </Typography>
           <div className="flex border border-primary">
@@ -49,13 +49,13 @@ export default function Footer() {
         </div>
       </Container>
 
-      <Container className="space-y-11 pb-11 pt-9">
+      <Container className="space-y-11 pb-2 pt-2">
         <hr className="w-full ps-2 border-gray-4" />
         <div className="flex flex-wrap items-center justify-between gap-1 text-center md:text-center">
           <Typography variant="caption1" theme="gray">
             {`Copyright © 2010 - ${currentYear}`}
           </Typography>
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-center">
           <Avatar
             src="/assets/images/badge2.png"
             alt="Logo"/>
@@ -84,7 +84,7 @@ interface footerLinkProps {
 
 const FooterLinks = ({ data }: footerLinkProps) => {
   const linksList = data.links.map((link) => (
-    <div key={uuidv4()} className="mb-8 md:mb-4">
+    <div key={uuidv4()} className="mb-2 md:mb-8 grid-row">
       {link.type === LinkType.INTERNAL && (
         <ActiveLink href={link.baseUrl}>{link.label}</ActiveLink>
       )}
@@ -98,7 +98,7 @@ const FooterLinks = ({ data }: footerLinkProps) => {
 
   return (
     <div className="min-w-[150px] md:w-1/4">
-      <Typography theme="gray" variant="body" weight="medium" className="pb-5">
+      <Typography theme="gray" variant="h4" weight="medium" className="pb-1">
         {data.label}
       </Typography>
       <Typography theme="black" variant="caption1" className="">

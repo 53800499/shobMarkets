@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { JSX, useState } from "react";
+import React, { useState } from "react";
 import Button from "@/ui/designSystem/button/button";
 import Typography from "@/ui/designSystem/typography/typography";
 import {
@@ -9,83 +9,72 @@ import {
   RiStarFill,
   RiTwitterFill
 } from "react-icons/ri";
+import { produitType } from "@/types/produitType";
 
-interface ColorOption {
+/* interface ColorOption {
   name: string; // Nom de la couleur (ex. "Rouge")
   code: string; // Code CSS de la couleur (ex. "bg-red-500")
   icon?: JSX.Element; // Optionnel : Icône associée à la couleur
-}
+} */
 
 interface ProduitDetailProps {
-  id: number;
-  nom: string;
-  description: string;
-  categorie: string;
-  colors: ColorOption[];
-  sizes: (string | number)[];
-  prix: number;
-  promotion?: number;
-  quantity?: number;
+  produit: produitType;
 }
 
-export default function ProduitDetail({
-  id,
-  nom,
-  description,
-  prix,
-  promotion,
-  colors,
-  sizes,
-  categorie,
-  quantity = 1 // Défaut à 1 si non défini
-}: ProduitDetailProps) {
+export default function ProduitDetail({ produit }: ProduitDetailProps) {
   // Appel de `useCart` au bon endroit (dans le composant fonctionnel)
-  const [currentQuantity, setCurrentQuantity] = useState(quantity);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | number | null>(
     null
   );
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncrementer = () => {
+    setQuantity(quantity + 1);
+  };
+  const handleDecrementer = () => {
+    setQuantity(quantity - 1);
+  };
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(e.target.value, 10);
-    setCurrentQuantity(isNaN(newQuantity) || newQuantity < 1 ? 1 : newQuantity);
+    setQuantity(isNaN(newQuantity) || newQuantity < 1 ? 1 : newQuantity);
   };
 
   const handleAddToCart = () => {
     console.log(
-      `Produit ajouté : ID ${id}, Quantité : ${currentQuantity}, Couleur : ${selectedColor}, Taille : ${selectedSize}`
+      `Produit ajouté : ID ${produit.id}, Quantité : ${quantity}, Couleur : ${selectedColor}, Taille : ${selectedSize}`
     );
     // Ajouter la logique pour ajouter au panier
   };
   // Gestion de l'ajout au panier
-  
 
   return (
-    <div className="flex flex-col gap-4 w-full ">
-      <Typography variant="h2" component="h2">
-        {nom}
+    <div className="flex flex-col gap-4 w-full sm:w-auto">
+      <Typography variant="h3" component="h3">
+        {produit.nom}
       </Typography>
       <div>
-        {promotion ? (
+        {produit.promotion ? (
           <div className="flex items-center gap-2">
             <Typography
               variant="body"
               component="span"
               className="font-bold text-green-600"
             >
-              {promotion}€
+              {produit.promotion}€
             </Typography>
             <Typography
               variant="body"
               component="span"
               className="line-through text-gray-4"
             >
-              {prix}€
+              {produit.prix}€
             </Typography>
           </div>
         ) : (
           <Typography variant="body" component="p" className="text-gray-800">
-            {prix}€
+            {produit.prix}€
           </Typography>
         )}
       </div>
@@ -104,7 +93,7 @@ export default function ProduitDetail({
         component="p"
         className="max-w-[500px] text-justify"
       >
-        {description}
+        {produit.description}
       </Typography>
       <hr className="my-2 border-gray-4" />
 
@@ -114,7 +103,7 @@ export default function ProduitDetail({
           Sélectionnez la couleur
         </Typography>
         <div className="flex gap-4">
-          {colors.map((color, index) => (
+          {produit.colors.map((color, index) => (
             <Button
               key={index}
               className={`w-10 h-10 rounded-full ${color.code} ${
@@ -122,9 +111,7 @@ export default function ProduitDetail({
               }`}
               action={() => setSelectedColor(color.name)}
               aria-label={`Choisir la couleur ${color.name}`}
-            >
-              {color.icon && color.icon}
-            </Button>
+            ></Button>
           ))}
         </div>
       </div>
@@ -137,7 +124,7 @@ export default function ProduitDetail({
           Sélectionnez la taille
         </Typography>
         <div className="flex gap-4">
-          {sizes.map((size, index) => (
+          {produit.sizes.map((size, index) => (
             <button
               key={index}
               className={`w-10 h-10 rounded ${
@@ -154,28 +141,61 @@ export default function ProduitDetail({
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
-        {/* Sélecteur de quantité */}
-        <input
-          type="number"
-          min="1"
-          className="w-16 h-12 text-center border rounded border-primary"
-          value={currentQuantity}
-          onChange={handleQuantityChange}
-          aria-label={`Quantité pour ${nom}`}
-        />
-
-        {/* Bouton Ajouter au panier */}
-        <Button
-          variant="outline"
-          size="small"
-          className="w-[156px] rounded"
-          action={handleAddToCart}
-          disabled={!selectedColor || !selectedSize}
-          aria-label={`Ajouter ${currentQuantity} ${nom} au panier`}
-        >
-          Ajouter au panier
-        </Button>
+      <div className="space-y-2 items-center gap-4">
+        <Typography variant="body" className="text-gray-4">
+          Sélectionnez la quantitée
+        </Typography>
+        <div className="flex flex-wrap items-center gap-4">
+          <div className="flex  gap-2">
+            <button
+              onClick={() => {
+                handleIncrementer();
+              }}
+              className="rounded bg-primary text-white items-center px-5 w-12 hover:shadow hover hover:scale-105 h-12"
+            >
+              +
+            </button>
+            {/* Sélecteur de quantité */}
+            <input
+              type="number"
+              min="1"
+              className="w-16 h-12 text-center border rounded border-primary"
+              value={quantity}
+              onChange={handleQuantityChange}
+              aria-label={`Quantité pour ${produit.nom}`}
+            />
+            <button
+              onClick={() => {
+                handleDecrementer();
+              }}
+              className="rounded bg-primary text-white items-center px-5 w-12 hover:shadow hover hover:scale-105 h-12"
+            >
+              -
+            </button>
+          </div>
+          <div className="flex space-x-1">
+            {/* Bouton Ajouter au panier */}
+            <Button
+              variant="outline"
+              size="small"
+              className="w-[156px] rounded"
+              action={handleAddToCart}
+              disabled={!selectedColor || !selectedSize}
+              aria-label={`Ajouter ${quantity} ${produit.nom} au panier`}
+            >
+              Ajouter au panier
+            </Button>
+            <Button
+              size="small"
+              className="rounded"
+              action={handleAddToCart}
+              disabled={!selectedColor || !selectedSize}
+              aria-label={`Ajouter ${quantity} ${produit.nom} au panier`}
+            >
+              Commander
+            </Button>
+          </div>
+        </div>
       </div>
       <hr className="my-2 border-gray-4" />
       <div>
@@ -183,7 +203,7 @@ export default function ProduitDetail({
           <tbody>
             <tr>
               <td>Catégorie </td>
-              <td> : {categorie}</td>
+              <td> : {produit.categorie}</td>
             </tr>
             <tr>
               <td>Partager</td>

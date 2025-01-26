@@ -16,8 +16,8 @@ export default function ProduitCategorie({ categorie }: Props) {
 
   return (
     <div className="py-12 my-12 bg-white">
-      <Typography component="h1" variant="h1" className="text-center">
-        Nos Produits De La Catégorie : <span className="text-primary">{categorie}</span>
+      <Typography component="h2" variant="h2" className="text-center">
+        Nos produits de la catégorie : <span className="text-primary">{categorie}</span>
       </Typography>
 
       {produitsFiltres.length > 0 ? (
@@ -25,6 +25,7 @@ export default function ProduitCategorie({ categorie }: Props) {
           {produitsFiltres.map((produit, index) => (
             <CartProduit
               key={index}
+              id={produit.id}
               src={produit.src}
               alt={produit.alt}
               nom={produit.nom}
