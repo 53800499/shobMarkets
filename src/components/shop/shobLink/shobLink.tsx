@@ -28,8 +28,7 @@ export default function ShobLink() {
       />
 
       {/* Overlay avec contenu centré */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white bg-opacity-50">
-        
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
         {/* Avatar */}
         <Avatar src="/assets/images/logo.png" alt="logo" size="small" />
 
