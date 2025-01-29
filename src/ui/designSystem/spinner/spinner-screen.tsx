@@ -4,7 +4,7 @@ import Spinner from './spinner'
 export default function SpinnerScreen() {
   return (
     <div className='flex items-center justify-center h-full '>
-      <Spinner/>
+      <Spinner size='large'/>
     </div>
   )
 }

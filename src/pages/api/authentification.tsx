@@ -56,7 +56,7 @@ export const firebaseLogOutUser = async () => {
   try {
     await signOut(auth);
     /* const user = userCredential.user; */
-    //return {data: userCredential.user}
+    return {data: true}
   } catch (error) {
     const firebaseError = error as FirebaseError;
     const errorCode = firebaseError.code;

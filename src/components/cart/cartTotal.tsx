@@ -2,9 +2,12 @@
 
 import Button from "@/ui/designSystem/button/button";
 import Typography from "@/ui/designSystem/typography/typography";
+import { useRouter } from "next/router";
 import React from "react";
 
 export default function CartTotal({ totalAmount = 2500 }) {
+  const route = useRouter();
+  const handleCaissement = () => route.push("/checkout");
   return (
     <div className="w-full max-w-sm p-6 mx-auto  text-center shadow bg-primary-1">
       {/* Titre */}
@@ -33,7 +36,7 @@ export default function CartTotal({ totalAmount = 2500 }) {
       {/* Ligne de total */}
       <div className="flex items-center justify-between w-full mb-6 px-9">
         <Typography variant="body" component="span" className="text-gray-700">
-          Total 
+          Total
         </Typography>
         <Typography
           variant="body"
@@ -48,7 +51,7 @@ export default function CartTotal({ totalAmount = 2500 }) {
       {/* Bouton pour passer à la caisse */}
       <Button
         variant="outline"
-        action={() => alert("Passer à la caisse")}
+        action={handleCaissement}
         size="small"
         className="rounded"
         aria-label="Passer à la caisse"

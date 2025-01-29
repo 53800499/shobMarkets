@@ -9,10 +9,11 @@ import Link from "next/link";
 import Avatar from "@/ui/designSystem/avatar/avatar";
 //import { FaUser } from "react-icons/fa6";
 import { HiOutlineShoppingCart } from "react-icons/hi";
-import { FaBars, FaSearch, FaTimes } from "react-icons/fa";
+import { FaBars, FaSearch, FaTimes, FaUser } from "react-icons/fa";
 import { useRouter } from "next/router"; // Importer useRouter de Next.js
 import { useCart } from "@/context/cartContext";
 import { useAuth } from "@/context/AuthUserContext";
+import { toast } from "react-toastify";
 
 export default function Navigation() {
   const { cart } = useCart(); // Gestion via le contexte
@@ -20,11 +21,8 @@ export default function Navigation() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false); // Etat pour le focus
   const router = useRouter(); // Remplacer useNavigate par useRouter
-  const {authUser} = useAuth(); // Utilisation du hook useAuth
-  console.log("authUser");
+  const { authUser } = useAuth(); // Utilisation du hook useAuth
   console.log(authUser);
-  console.log(cart);
-
   useEffect(() => {
     // Vérifier si l'URL actuelle est "/cart"
     if (router.pathname === "/cart") {
@@ -44,6 +42,14 @@ export default function Navigation() {
   };
   console.log(cart);
 
+const handleCart = () => {
+  if (cart.length === 0) {
+    toast("Votre panier est vide");
+    return; // Ne rien faire si le panier est vide
+  }
+  router.push("/cart"); // Redirection vers la page du panier
+
+}
   // Fonction pour passer à une autre page
   const navigateToPage = (path: string) => {
     router.push(path); // Utilisation de router.push pour la navigation
@@ -109,7 +115,7 @@ export default function Navigation() {
         <div className="flex items-center md:gap-3 pb-3">
           <div className="relative">
             <Button
-              action={() => navigateToPage("/cart")}
+              action={handleCart}
               variant="ico"
               size="large"
               iconTheme="secondary"
@@ -124,13 +130,14 @@ export default function Navigation() {
             )}
           </div>
 
-          {/* <Button
+          <Button
             variant="ico"
             size="large"
             iconTheme="secondary"
             icon={{ icon: FaUser }}
+            action={() => navigateToPage("/connexion")}
             aria-label="Profil"
-          /> */}
+          />
 
           {/* Mobile Menu Button */}
           <button

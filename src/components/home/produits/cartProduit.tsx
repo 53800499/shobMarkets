@@ -57,7 +57,7 @@ export default function CartProduit({
     <Link href={`/detail-produit/${id}`}>
     <div className="relative flex flex-col bg-gray-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
       {/* Image et badges */}
-      <div className="relative w-full md:h-48 h-24 sm:h-44 overflow-hidden rounded-t-lg">
+      <div className="relative w-full md:h-48 h-32 sm:h-44 overflow-hidden rounded-t-lg">
         <Image
           src={src}
           alt={alt}
