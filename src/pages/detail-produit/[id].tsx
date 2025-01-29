@@ -3,13 +3,13 @@
 import { dbProduits } from "@/components/home/produits/produitsDB";
 import ProduitDetailContainer from "@/components/produitDetail/produitDetail.container";
 import QualiteContainer from "@/components/shop/qualite/qualite.container";
-import { produitType } from "@/types/produitType";
+import { ProduitType } from "@/types/produitType";
 import Layout from "@/ui/components/layout/layout";
 import Seo from "@/ui/components/seo/seo";
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 type Props = {
-  produit: produitType | null;
+  produit: ProduitType | null;
 };
 
 export default function DetailProduit({ produit }: Props) {

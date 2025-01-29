@@ -11,9 +11,11 @@ import { useCart } from "@/context/cartContext";
 export default function CartTable() {
   const { cart, updateCartItem, removeCartItem } = useCart(); // Gestion via le contexte
 
-  const calculateTotal = () => {
-    return cart.reduce((acc, item) => acc + item.prix * item.quantity, 0);
-  };
+ const calculateTotal = () => {
+  return cart.reduce((acc, item) => 
+    acc + (Number(item.prix) || 0) * (Number(item.quantity) || 0), 0);
+};
+
 
   const handleQuantityChange = (id: string | number, value: number) => {
     if (value > 0) {
@@ -31,9 +33,9 @@ export default function CartTable() {
     <Container className="flex flex-col sm:flex-rows gap-8 shadow bg-white md:flex-row p-6 md:justify-between md:items-start">
       {/* Liste des produits */}
       <div className="bg-primary-1 w-full p-6 rounded-lg mt-9 shadow md:w-3/5 space-y-4">
-        {cart.map((item, index) => (
+        {cart.map((item) => (
           <div
-            key={index}
+            key={item.id}
             className="flex items-center justify-between border-b border-primary pb-4 last:border-none"
           >
             {/* Image du produit */}

@@ -9,7 +9,7 @@ import Breadcrumbs from "@/ui/components/breadcrumbs/breadcrumbs";
 export default function MotsDePassePerdue() {
   return (
     <>
-      <Seo title="Fortget password" description="Site vitrine" />
+      <Seo title="Mot de passe oublié" description="Shopimarket" />
       <Layout isDisplayCreadCrumbs={false}>
         <Breadcrumbs />
         <ForgetPasswordContainer />

@@ -22,7 +22,7 @@ export default function Breadcrumbs({ className, nom }: Props) {
   <div key={index} className="mt-5 ">
     <Link href={index > 0 ? `/${segments.slice(1, index + 1).join("/")}` : "/"}>
       <Typography
-        variant="h4"
+        variant="caption4"
         component="span"
         className={clsx(
           segment !== lastSegment ? "text-gray-600" : "text-gray",
@@ -32,7 +32,7 @@ export default function Breadcrumbs({ className, nom }: Props) {
         {segment === "accueil" ? (<span className="mt-10 capitalize">Accueil</span>) : segment.replace(/-/g, " ")}
       </Typography>
       {segment !== lastSegment && (
-        <IoIosArrowForward className="inline-block mb-2 ml-2" />
+        <IoIosArrowForward className="inline-block mb-1 ml-2" />
       )}
     </Link>
     {nom && index === segments.length - 1 && (
@@ -41,7 +41,7 @@ export default function Breadcrumbs({ className, nom }: Props) {
   </div>
 ));
   return (
-    <Container className={clsx("flex items-center gap-2", className)}>
+    <Container className={clsx("flex items-center gap-1", className)}>
       {view}
     </Container>
   );

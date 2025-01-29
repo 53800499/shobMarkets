@@ -33,7 +33,7 @@ export default function Produits() {
     <Container className="py-6 my-6 bg-white">
       {/* Titre de la section */}
       <Typography component="h2" variant="h2" className="text-center mb-6">
-        Nos produits
+        Nos Produits
       </Typography>
 
       {/* Grille des produits */}

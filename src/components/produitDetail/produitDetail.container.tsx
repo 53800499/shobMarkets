@@ -5,10 +5,10 @@ import ProduitDetail from "./produitDetail";
 import Breadcrumbs from "@/ui/components/breadcrumbs/breadcrumbs";
 import ProduitCategorie from "./produitCategorie";
 import ProduitComment from "./produitComment";
-import { produitType } from "@/types/produitType";
+import { ProduitType } from "@/types/produitType";
 
 type Props = {
-  produit: produitType;
+  produit: ProduitType;
 };
 
 export default function ProduitDetailContainer({ produit }: Props) {

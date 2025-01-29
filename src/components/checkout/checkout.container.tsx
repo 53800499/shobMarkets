@@ -1,7 +1,6 @@
   /** @format */
 
   import Container from "@/ui/components/container/container";
-  import Button from "@/ui/designSystem/button/button";
   import { Input } from "@/ui/designSystem/forms/input";
   import Typography from "@/ui/designSystem/typography/typography";
   import { useForm, SubmitHandler } from "react-hook-form";
@@ -53,20 +52,6 @@
         required: true
       },
       {
-        id: "nomEntreprise",
-        label: "Nom de l'entreprise (Optionnel)",
-        placeholder: "Nom de l'entreprise",
-        type: "text",
-        required: true
-      },
-      {
-        id: "continant",
-        label: "Continent",
-        placeholder: "Continent / Région",
-        type: "text",
-        required: true
-      },
-      {
         id: "adresseRue",
         label: "Adresse",
         placeholder: "Adresse de la rue",
@@ -77,13 +62,6 @@
         id: "ville",
         label: "Ville",
         placeholder: "Ville",
-        type: "text",
-        required: true
-      },
-      {
-        id: "province",
-        label: "Province",
-        placeholder: "Province",
         type: "text",
         required: true
       },
@@ -184,8 +162,8 @@
                 .
               </Typography>
 
-              <Button variant="outline" size="small" className="rounded">
-              PASSER COMMANDE</Button>
+              {/* <Button variant="outline" size="small" className="rounded">
+              PASSER COMMANDE</Button> */}
               <button
                 type="submit"
                 className="w-full px-4 py-2 text-white bg-primary rounded hover:bg-primary-dark"

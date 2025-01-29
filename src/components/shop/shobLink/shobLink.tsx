@@ -35,7 +35,7 @@ export default function ShobLink() {
 
         {/* Titre de la page */}
         <Typography
-          variant="h1"
+          variant="h4"
           className="p-0 m-0 leading-none text-center text-gray-800 capitalize"
         >
           {currentPageName}

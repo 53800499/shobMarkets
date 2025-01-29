@@ -9,7 +9,7 @@ import {
   RiStarFill,
   RiTwitterFill
 } from "react-icons/ri";
-import { produitType } from "@/types/produitType";
+import { ProduitType } from "@/types/produitType";
 import { useCart } from "@/context/cartContext";
 
 /* interface ColorOption {
@@ -19,7 +19,7 @@ import { useCart } from "@/context/cartContext";
 } */
 
 interface ProduitDetailProps {
-  produit: produitType;
+  produit: ProduitType;
 }
 
 export default function ProduitDetail({ produit }: ProduitDetailProps) {
@@ -181,8 +181,8 @@ export default function ProduitDetail({ produit }: ProduitDetailProps) {
             <Button
               variant="outline"
               size="small"
-              className="w-[156px] rounded"
               action={handleAddToCart}
+              className="w-[156px] rounded"
               disabled={!selectedColor || !selectedSize}
               aria-label={`Ajouter ${quantity} ${produit.nom} au panier`}
             >
@@ -191,7 +191,6 @@ export default function ProduitDetail({ produit }: ProduitDetailProps) {
             <Button
               size="small"
               className="rounded"
-              action={handleAddToCart}
               disabled={!selectedColor || !selectedSize}
               aria-label={`Ajouter ${quantity} ${produit.nom} au panier`}
             >

@@ -1,21 +1,22 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBP80uh_tYYzEZkfRgxOS8qlAYP4eTgBks",
-  authDomain: "shopma-70062.firebaseapp.com",
-  projectId: "shopma-70062",
-  storageBucket: "shopma-70062.firebasestorage.app",
-  messagingSenderId: "88795707678",
-  appId: "1:88795707678:web:fc79dde06ec8e4f89e310f",
-  measurementId: "G-V5G9FWEM0F"
+  apiKey: "AIzaSyCW9LF6yxcVmls0Q2D21p3m0kQjuqCSdrI",
+  authDomain: "shopmarkets-3d562.firebaseapp.com",
+  databaseURL: "https://shopmarkets-3d562-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "shopmarkets-3d562",
+  storageBucket: "shopmarkets-3d562.firebasestorage.app",
+  messagingSenderId: "456618903566",
+  appId: "1:456618903566:web:22fd2ac34d49143153d45f",
+  measurementId: "G-4QKG17P3T7"
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const analytics = getAnalytics(app);
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);

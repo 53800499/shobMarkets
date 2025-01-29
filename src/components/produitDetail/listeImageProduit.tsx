@@ -9,7 +9,7 @@ interface Props {
 
 export default function ListeImageProduit({ src, alt }: Props) {
   return (
-    <div className="relative min-w-16 min-h-20">
+    <div className="relative min-w-20 min-h-20">
       <Image
         src={src}
         alt={alt}

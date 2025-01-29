@@ -7,18 +7,24 @@ import Typography from "@/ui/designSystem/typography/typography";
 import Button from "@/ui/designSystem/button/button";
 import Link from "next/link";
 import Avatar from "@/ui/designSystem/avatar/avatar";
-import { FaUser } from "react-icons/fa6";
+//import { FaUser } from "react-icons/fa6";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FaBars, FaSearch, FaTimes } from "react-icons/fa";
 import { useRouter } from "next/router"; // Importer useRouter de Next.js
 import { useCart } from "@/context/cartContext";
+import { useAuth } from "@/context/AuthUserContext";
 
 export default function Navigation() {
-    const { cart } = useCart(); // Gestion via le contexte
+  const { cart } = useCart(); // Gestion via le contexte
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false); // Etat pour le focus
   const router = useRouter(); // Remplacer useNavigate par useRouter
+  const {authUser} = useAuth(); // Utilisation du hook useAuth
+  console.log("authUser");
+  console.log(authUser);
+  console.log(cart);
+
   useEffect(() => {
     // Vérifier si l'URL actuelle est "/cart"
     if (router.pathname === "/cart") {
@@ -36,12 +42,13 @@ export default function Navigation() {
     e.preventDefault();
     console.log("Recherche de produit :", searchQuery);
   };
+  console.log(cart);
 
   // Fonction pour passer à une autre page
   const navigateToPage = (path: string) => {
     router.push(path); // Utilisation de router.push pour la navigation
   };
-  const nbreProduitParnier= cart.length;
+  const nbreProduitParnier = cart.length;
 
   return (
     <nav className="bg-white shadow sticky top-0 z-50">
@@ -109,16 +116,21 @@ export default function Navigation() {
               icon={{ icon: HiOutlineShoppingCart }}
               aria-label="Panier"
               className={`${isFocused ? "bg-primary text-white" : ""}`} // Assurez-vous que la classe est correctement conditionnée
-            />{cart?'': (<span className="absolute top-1 right-1 text-white w-5 h-5 bg-red rounded-full text-xs flex justify-center items-center font-bold">{cart?'0': nbreProduitParnier}</span>)}
+            />
+            {cart.length > 0 && (
+              <span className="absolute top-0.5 right-0.5 w-5 h-5 bg-red-300 text-red-300 rounded-full text-xs flex justify-center items-center font-bold">
+                {nbreProduitParnier}
+              </span>
+            )}
           </div>
 
-          <Button
+          {/* <Button
             variant="ico"
             size="large"
             iconTheme="secondary"
             icon={{ icon: FaUser }}
             aria-label="Profil"
-          />
+          /> */}
 
           {/* Mobile Menu Button */}
           <button

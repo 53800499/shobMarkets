@@ -7,16 +7,18 @@ interface Context {
 }
 
 interface Product {
-  id: string;
+   id: number | string;
   src: string;
   alt: string;
   nom: string;
   prix: number;
-  promotion: string | number;
+  promotion?: string | number;
   date?: string;
   description?: string;
-  size: number;
-  quantity: number;
+  size?: number| string| undefined;
+  quantity: number | string;
+  selectedColor?: string;
+  selectedSize?: string | number;
 }
 
 interface CartContextType {

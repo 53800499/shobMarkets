@@ -9,7 +9,7 @@ import Breadcrumbs from "@/ui/components/breadcrumbs/breadcrumbs";
 export default function Inscription() {
   return (
     <>
-      <Seo title="Connexion " description="Site vitrine" />
+      <Seo title="Inscription " description="Shopimarket" />
       <Layout isDisplayCreadCrumbs={false}> 
         <Breadcrumbs/>
         <RegisterContainer />

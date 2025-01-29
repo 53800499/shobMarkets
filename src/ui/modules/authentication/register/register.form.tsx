@@ -46,8 +46,9 @@ export default function RegisterForm({ form }: Props) {
         placeholder="Comment vous nous aviez connu"
         register={register}
         errors={errors}
+        type="text"
         errorMsg="Champs obligatoire"
-        id="password"
+        id="how_did_hear"
         required={true}
         isAutoCompleted={false}
       />
