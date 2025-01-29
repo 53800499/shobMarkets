@@ -12,6 +12,7 @@
     "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
+    "@paypal/react-paypal-js": "^8.8.1",
     "clsx": "^2.1.1",
     "firebase": "^11.2.0",
     "next": "15.1.4",

@@ -7,7 +7,7 @@ interface Context {
 }
 
 interface Product {
-   id: number | string;
+  id: number | string;
   src: string;
   alt: string;
   nom: string;
@@ -15,7 +15,7 @@ interface Product {
   promotion?: string | number;
   date?: string;
   description?: string;
-  size?: number| string| undefined;
+  size?: number | string | undefined;
   quantity: number | string;
   selectedColor?: string;
   selectedSize?: string | number;
@@ -25,7 +25,10 @@ interface CartContextType {
   cart: Product[];
   addToCart: (product: Product) => void;
   updateCartItem: (productId: string, quantity: number) => void;
-  removeCartItem: (productId: string) => void; // Nouvelle fonction pour supprimer un produit
+  removeCartItem: (productId: string) => void;
+  calculateTotalPrice: () => number;
+  calculateTotalPromoPrice: () => number;
+  calculateDiscountRate: () => number;
 }
 
 // Créez le contexte avec un type explicite ou undefined
@@ -49,8 +52,8 @@ export function CartProvider({ children }: Context) {
 
   // Fonction pour mettre à jour la quantité d'un produit dans le panier
   const updateCartItem = (productId: string, quantity: number) => {
-    setCart((prevCart) => 
-      prevCart.map((product) => 
+    setCart((prevCart) =>
+      prevCart.map((product) =>
         product.id === productId ? { ...product, quantity } : product
       )
     );
@@ -58,11 +61,52 @@ export function CartProvider({ children }: Context) {
 
   // Fonction pour supprimer un produit du panier
   const removeCartItem = (productId: string) => {
-    setCart((prevCart) => prevCart.filter((product) => product.id !== productId));
+    setCart((prevCart) =>
+      prevCart.filter((product) => product.id !== productId)
+    );
   };
 
+  // Fonction pour calculer le prix total des produits du panier
+  const calculateTotalPrice = () => {
+    return cart.reduce((total, product) => {
+      return total + product.prix * Number(product.quantity);
+    }, 0);
+  };
+
+  // Fonction pour calculer le prix total en tenant compte des promotions
+  const calculateTotalPromoPrice = () => {
+    return cart.reduce((total, product) => {
+      const price = product.promotion
+        ? Number(product.promotion)
+        : product.prix;
+      return total + price * Number(product.quantity);
+    }, 0);
+  };
+
+  // Fonction pour calculer le pourcentage moyen de réduction
+  const calculateDiscountRate = () => {
+    const totalNormalPrice = calculateTotalPrice();
+    const totalPromoPrice = calculateTotalPromoPrice();
+
+    if (totalNormalPrice === 0) return 0; // Éviter la division par zéro
+
+    const discount = totalNormalPrice - totalPromoPrice;
+    return (discount / totalNormalPrice) * 100;
+  };
+
+  // Ajout des fonctions au contexte
   return (
-    <CartContext.Provider value={{ cart, addToCart, updateCartItem, removeCartItem }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        updateCartItem,
+        removeCartItem,
+        calculateTotalPrice,
+        calculateTotalPromoPrice,
+        calculateDiscountRate
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
