@@ -6,7 +6,7 @@ import Typography from "../typography/typography";
 interface InputProps<T extends FieldValues> {
   isLoading?: boolean;
   placeholder: string;
-  type?: "text" | "email" | "password" | "tel";
+  type?: "text" | "email" | "password" | "tel" | "number"| "file";
   register: UseFormRegister<T>;
   errors: FieldErrors<T>;
   errorMsg?: string;

@@ -1,6 +1,7 @@
 /** @format */
 
 import { auth } from "@/config/firebase-config";
+import { getFirebaseError } from "@/utils/getFirebaseError";
 import { FirebaseError } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
@@ -22,7 +23,7 @@ export const firebaseCreateUser = async (email: string, password: string) => {
   } catch (error) {
     const firebaseError = error as FirebaseError;
     const errorCode = firebaseError.code;
-    const errorMessage = firebaseError.message;
+    const errorMessage = getFirebaseError("createUserWithEmailAndPassword", firebaseError.code)
     return {
       error: {
         code: errorCode,
@@ -43,7 +44,7 @@ export const firebaseLoginUser = async (email: string, password: string) => {
   } catch (error) {
     const firebaseError = error as FirebaseError;
     const errorCode = firebaseError.code;
-    const errorMessage = firebaseError.message;
+    const errorMessage = getFirebaseError("signInWithEmailAndPassword", firebaseError.code)
     return {
       error: {
         code: errorCode,
@@ -60,7 +61,7 @@ export const firebaseLogOutUser = async () => {
   } catch (error) {
     const firebaseError = error as FirebaseError;
     const errorCode = firebaseError.code;
-    const errorMessage = firebaseError.message;
+    const errorMessage = getFirebaseError("signOut", firebaseError.code)
     return {
       error: {
         code: errorCode,
@@ -77,7 +78,7 @@ export const firebaseResetPasswordUser = async (email: string) => {
   } catch (error) {
     const firebaseError = error as FirebaseError;
     const errorCode = firebaseError.code;
-    const errorMessage = firebaseError.message;
+    const errorMessage = getFirebaseError("sendPasswordResetEmail", firebaseError.code)
     return {
       error: {
         code: errorCode,
@@ -96,7 +97,7 @@ export const firebaseEmailVerification = async () => {
     } catch (error) {
       const firebaseError = error as FirebaseError;
       const errorCode = firebaseError.code;
-      const errorMessage = firebaseError.message;
+      const errorMessage = getFirebaseError("sendEmailVerification", firebaseError.code)
       return {
         error: {
           code: errorCode,

@@ -1,7 +1,7 @@
 /** @format */
 
 
-export interface ProduitType{
+export interface ProduitTypes{
   id: number;
   src: string;
   alt: string;
@@ -11,12 +11,20 @@ export interface ProduitType{
   dateAjout: string;
   description: string;
   description1: string;
-  quantity?: number;
-  promotion?: number;
+  quantity?: number;//quantiteStock
+  promotion?: number;//prixPromo
   images: { id:number; src: string; alt: string }[];
   colors: { id: number; name: string; code: string }[];
   sizes: string[];
   selectedColor?: string;
   selectedSize?: string | number;
   size?: string; // Cette propriété doit être présente
+};
+export interface ProduitType{
+  prix: number;
+  nom: string;
+  description: string;
+  description1: string;
+  quantiteStock?: number;//quantiteStock
+  prixPromo?: number | null;//prixPromo
 };

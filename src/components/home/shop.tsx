@@ -2,21 +2,51 @@
 
 import Container from "@/ui/components/container/container";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Typography from "@/ui/designSystem/typography/typography";
 import Button from "@/ui/designSystem/button/button";
 import { useRouter } from "next/router";
 
 export default function Decouvrir() {
   const router = useRouter();
+  const [isLoaded, setIsLoaded] = useState(false); // État pour détecter si le composant est chargé
 
   // Navigation vers la boutique
   const pageShop = () => {
     router.push("/shop");
   };
 
+  const [count, setCount] = useState(0); // Initialise l'état à 0
+  const target = 200; // Valeur cible
+
+  useEffect(() => {
+    const incrementDuration = 8000; // 30 secondes
+    const incrementSpeed = incrementDuration / target; // Temps pour atteindre chaque incrément (en millisecondes)
+
+    const interval = setInterval(() => {
+      setCount((prevCount) => {
+        if (prevCount < target) {
+          return prevCount + 1;
+        } else {
+          clearInterval(interval); // Arrêter l'incrémentation une fois la cible atteinte
+          return target;
+        }
+      });
+    }, incrementSpeed);
+
+    // Déclencher l'animation de chargement après 100ms
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100); // Délai pour commencer l'animation
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
-    <div className="bg-white">
+    <div className={`text-center hidden m:flex ${isLoaded ? 'opacity-100 transform transition-all duration-1000' : 'opacity-0 transform translate-y-10'}`}>
       {/* Section Desktop */}
       <Container className="flex flex-wrap sm:flex-nowrap overflow-visible">
         <div className="flex-1 space-y-2 sm:space-y-6 relative p-2 lg:p-10">
@@ -58,7 +88,7 @@ export default function Decouvrir() {
           <div className="flex flex-row justify-center items-center gap-6 md:mt-8">
             <div className="text-center m-0 p-0">
               <Typography variant="h3" className="text-gray-900 font-bold">
-                200+
+                {count}+
               </Typography>
               <Typography
                 variant="caption3"
@@ -85,7 +115,7 @@ export default function Decouvrir() {
 
             <div className="text-center hidden m:flex">
               <Typography variant="h3" className="text-gray-900 font-bold">
-                200+
+                {count}+
               </Typography>
               <Typography
                 variant="caption3"
@@ -99,7 +129,7 @@ export default function Decouvrir() {
           <div className="justify-center flex-1 m:hidden mt-2">
             <div className="text-center  ">
               <Typography variant="h3" className="text-gray-900 font-bold">
-                200+
+                {count}+
               </Typography>
               <Typography
                 variant="caption3"
